@@ -49,7 +49,8 @@ public class Game extends Application {
     * @return true if placement of piece is valid
     */
     public boolean checkValidPiece(Piece piece) {
-        if (board.checkValidPlacement() && currentPlayer.hasPiece(piece)) {
+        ArrayList<ArrayList<Integer>> clicks = new ArrayList<ArrayList<Integer>>();
+        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(piece)) {
             return true;
         } else {
             return false;
@@ -91,7 +92,7 @@ public class Game extends Application {
     */
     public Player gameOver() {
         //still need to figure out ties
-        Player winningPlayer;
+        Player winningPlayer = null;
         int winningScore = 0;
         for (Player player : players) {
             if (player.getScore() > winningScore) {

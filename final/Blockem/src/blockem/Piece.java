@@ -15,13 +15,22 @@ public class Piece {
     // number of blocks in piece
     int size;
 
+    
+    /**
+    * Sole constructor to initialize piece. Initializes 
+    * the coodinates and calculates the size of the piecesg 
+    * @param passedCoordinates a list of lists of coordinates for the various rotations of a piece
+    */
     public Piece(ArrayList<ArrayList<ArrayList<Integer>>> passedCoordinates) {
         coordinates = passedCoordinates;
         size = passedCoordinates.get(0).size();
     }
 
-    // checks whether the passed Coordinates match the piece, for all rotations
-    // Currently doesn't check all rotations
+    /**
+    * checks whether the passed Coordinates match the piece, for all rotations
+    * @param passedCoordinates coordinates of a players click
+    * @return a boolean: true if matches the piece, false otherwise
+    */
     public boolean isPiece(ArrayList<ArrayList<Integer>> passedCoordinates) {
         // if the piece is the right size
         if (passedCoordinates.size() == size) {
@@ -43,6 +52,10 @@ public class Piece {
         return false;
     }
 
+    /**
+    * returns the size of the piece 
+    * @return  the number of blocks in the piece
+    */
     public int getSize() {
         return size;
     }
