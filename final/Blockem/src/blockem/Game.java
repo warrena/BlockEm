@@ -14,9 +14,16 @@ import java.util.ArrayList;
  * Created on 5/26/16.
  */
 public class Game extends Application {
+    //list of player objects that are playing
     ArrayList<Player> players = new ArrayList<Player>();
+    
+    //The player who's turn it is
     Player currentPlayer;
+    
+    //The number of players who have passed their turn, the game ends if all players pass 
     int numberPassed = 0;
+    
+    //The game board
     Board board;
 
 
