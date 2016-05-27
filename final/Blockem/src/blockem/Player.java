@@ -10,10 +10,19 @@ import java.util.ArrayList;
  */
 public class Player {
 
+    //List of Piece objects that player has
     ArrayList<Piece> myPieces = new ArrayList<Piece>();
+    
+    //Current score of the player, equal to the area of remaining blocks that have yet to be played by player
     int score;
+    
+    //Name of player
     String name;
+    
+    //ImageView to hold png or jpg avatar
     private ImageView avatar;
+    
+    //Whether or not the player has passed, a player passes when they think they have no more moves left to play
     boolean passed;
 
 
