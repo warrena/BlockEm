@@ -35,6 +35,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = (Parent)loader.load();
         Controller controller = loader.getController();
+        controller.initialize();
 
         // Set up a KeyEvent handler so we can respond to keyboard activity.
         root.setOnKeyPressed(controller);
@@ -86,7 +87,7 @@ public class Main extends Application {
         // Solution (1): make the root node "focus traversable" from the beginning.
         // root.setFocusTraversable(true);
 
-        primaryStage.setTitle("Kinda Pong");
+        primaryStage.setTitle("Kinda Blockem");
         primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();
 

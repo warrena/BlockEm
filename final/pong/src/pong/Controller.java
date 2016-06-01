@@ -49,7 +49,55 @@ public class Controller implements EventHandler<KeyEvent> {
     }
 
     public void initialize() {
+        grid.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent arg0) {
+                System.out.println("Hello"+ arg0.getX() +"Y Value" + arg0.getY());
+            }
 
+        });
+
+        final Label l1 = new Label("  ");
+        final Label l2 = new Label("  ");
+        final Label l3 = new Label("  ");
+
+
+        l1.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+
+            @Override
+            public void handle(MouseEvent arg0)
+            {
+                l1.setStyle("-fx-background-color:yellow;");
+
+            }
+        });
+
+        l2.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+
+            @Override
+            public void handle(MouseEvent arg0)
+            {
+                l2.setStyle("-fx-background-color:yellow;");
+
+            }
+        });
+
+
+        l3.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+
+            @Override
+            public void handle(MouseEvent arg0)
+            {
+                l3.setStyle("-fx-background-color:yellow;");
+
+            }
+        });
+
+
+        grid.addRow(0, l1, l2, l3);
     }
 
     @FXML
