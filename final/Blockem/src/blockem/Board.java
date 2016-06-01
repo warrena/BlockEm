@@ -1,5 +1,12 @@
 package blockem;
 
+import javafx.geometry.VPos;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -53,7 +60,6 @@ public class Board {
 
     public static void main(String[] args) {
         Board b1 = new Board();
-
 
     }
 
