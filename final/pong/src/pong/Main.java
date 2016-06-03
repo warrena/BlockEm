@@ -88,7 +88,7 @@ public class Main extends Application {
         // root.setFocusTraversable(true);
 
         primaryStage.setTitle("Kinda Blockem");
-        primaryStage.setScene(new Scene(root, 700, 500));
+        primaryStage.setScene(new Scene(root, 800, 800));
         primaryStage.show();
 
         // Solution (2): once the Stage is displayed, explicitly put the focus on the root node.
