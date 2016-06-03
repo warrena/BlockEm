@@ -29,9 +29,9 @@ public class Board {
      * @param clicks the coordinates of a players clicks
      * @param currentPlayer the currentPlayer
      */
-    public void addClicksToBoard(ArrayList<Coordinate> clicks, Player currentPlayer) {
-        for(Coordinate click: clicks) {
-            board[click.x][click.y] = currentPlayer;
+    public void addClicksToBoard(ArrayList<GridCell> clicks, Player currentPlayer) {
+        for(GridCell click: clicks) {
+            board[click.getX()][click.getY()] = currentPlayer;
         }
     }
 

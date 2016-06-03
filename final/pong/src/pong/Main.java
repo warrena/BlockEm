@@ -35,7 +35,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = (Parent)loader.load();
         Controller controller = loader.getController();
-        controller.initialize();
+        //controller.initialize();
 
         // Set up a KeyEvent handler so we can respond to keyboard activity.
         root.setOnKeyPressed(controller);

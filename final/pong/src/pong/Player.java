@@ -17,14 +17,17 @@ public class Player {
     //Current score of the player, equal to the area of remaining blocks that have yet to be played by player
     int score;
 
+    //RGB values of player
+    int r;
+    int g;
+    int b;
+
+
     //Name of player
     String name;
 
-    //Name of player
-    Color color;
-
     //ImageView to hold png or jpg avatar
-    private ImageView avatar;
+    private String avatar;
 
     //Whether or not the player has passed, a player passes when they think they have no more moves left to play
     boolean passed;
@@ -35,16 +38,29 @@ public class Player {
      * the starting score of the game and creates the player's initial
      * list/repo of pieces
      * @param name the String name of the player
-     * @param avatar the avatar image for the player
+     * @param avatar_filepath the avatar image for the player
+     * @param red the red value for player color
+     * @param green the green value for player color
+     * @param blue the blue value for player color
      */
-    public Player(String name, ImageView avatar, Color color) {
+    public Player(String name, String avatar_filepath, int red, int green, int blue) {
         score = 89;
         passed = false;
         this.name = name;
-        this.color = color;
-        this.avatar = avatar;
+        this.r = red;
+        this.g = green;
+        this.b = blue;
+        this.avatar = avatar_filepath;
         myPieces = createAllPieces();
 
+    }
+
+    public String getColorString() {
+        return "rgb(" + r + "," + g + "," + b +")";
+    }
+
+    public String getMutedColorString() {
+        return "rgb(" + Math.round(r/1.5) + "," + Math.round(g/1.5) + "," + Math.round(b/1.5) +")";
     }
 
 
@@ -70,7 +86,7 @@ public class Player {
      * Returns the avatar image that refers to this player
      * @return  image of the avatar
      */
-    public ImageView getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 

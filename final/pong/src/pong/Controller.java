@@ -33,6 +33,8 @@ public class Controller implements EventHandler<KeyEvent> {
 
 
     @FXML private GridPane grid;
+    @FXML private GridPane playerView;
+    @FXML private GridPane pieceView;
 
     private int score;
     private boolean paused;
@@ -45,6 +47,14 @@ public class Controller implements EventHandler<KeyEvent> {
     }
 
     public void initialize() {
+        // Add four players
+        players.add(new Player("Jeremiah", "/pic.jpg", 255, 255, 0));
+        players.add(new Player("Allie", "/pic.jpg", 255, 0, 0));
+        players.add(new Player("Jeremiah", "/pic.jpg", 0, 0, 255));
+        players.add(new Player("Allie", "/pic.jpg", 0, 204, 0));
+        currentPlayer = players.get(0);
+
+
         // Creates all of the rows and columns
         for(int i=0; i<20; i++){
             grid.getColumnConstraints().add(new ColumnConstraints(20));
@@ -63,12 +73,8 @@ public class Controller implements EventHandler<KeyEvent> {
                     @Override
                     public void handle(MouseEvent arg0)
                     {
-                        Node src = (Node)arg0.getSource();
-                        int x = grid.getRowIndex(src);
-                        int y = grid.getColumnIndex(src);
-                   //     handleClick(x, y, cell);
-                        cell.setStyle("-fx-background-color:yellow;");
-                        System.out.println("Row: " + x + " Column: " + y);
+                        Pane src = (Pane)arg0.getSource();
+                        handleClick(src);
                     }
                 });
             }
@@ -78,10 +84,17 @@ public class Controller implements EventHandler<KeyEvent> {
     /**
      * Does all that needs to be done when a cell is clicked
      */
-    public void handleClick(int x, int y, Pane pane) {
-        if (board.checkClick(x, y, currentPlayer)) {
-            clicks.add(new GridCell(x, y, pane));
-        }
+    public void handleClick(Pane pane) {
+        int x = grid.getRowIndex(pane);
+        int y = grid.getColumnIndex(pane);
+        System.out.println("Row: " + x + " Column: " + y);
+        String colorString = "-fx-background-color:" + currentPlayer.getMutedColorString() + ";";
+        pane.setStyle(colorString);
+        clicks.add(new GridCell(x, y, pane));
+
+//        if (board.checkClick(x, y, currentPlayer)) {
+//            clicks.add(new GridCell(x, y, pane));
+//        }
     }
 
     @Override
@@ -95,7 +108,12 @@ public class Controller implements EventHandler<KeyEvent> {
      */
     public Player getNextPlayer() {
         //getNextPlayer - returns the next player, checks allPassed and calls gameOver if valid
-
+        int curIndex = players.indexOf(currentPlayer);
+        if(curIndex == 3) {
+            currentPlayer = players.get(0);
+        } else {
+            currentPlayer = players.get(curIndex + 1);
+        }
         return null;
     }
 
@@ -106,12 +124,25 @@ public class Controller implements EventHandler<KeyEvent> {
      * If both of these conditions are true, it returns true.
      * @return true if placement of piece is valid
      */
-    public boolean checkValidPiece() {
-        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
-            return true;
-        } else {
-            return false;
+    @FXML
+    public void checkValidPiece() {
+        for(GridCell click: clicks) {
+            String colorString = "-fx-background-color:" + currentPlayer.getColorString() + ";";
+            click.getPane().setStyle(colorString);
         }
+        clicks.clear();
+        getNextPlayer();
+
+//        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
+//            board.addClicksToBoard(clicks, currentPlayer);
+//            for(GridCell click: clicks) {
+//                click.getPane().setStyle("-fx-background-color:orange;");
+//            }
+//        } else {
+//            for(GridCell click: clicks) {
+//                click.getPane().setStyle("-fx-background-color:orange;");
+//            }
+//        }
     }
 
     /**
