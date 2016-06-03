@@ -10,7 +10,7 @@ import static jdk.nashorn.internal.objects.ArrayBufferView.length;
  */
 public class Piece {
     // a list of all the possible coordinates (for different rotations)
-    ArrayList<ArrayList<ArrayList<Integer>>> coordinates;
+    ArrayList<ArrayList<Coordinate>> coordinates;
 
     // number of blocks in piece
     int size;
@@ -21,26 +21,35 @@ public class Piece {
      * the coodinates and calculates the size of the piecesg
      * @param passedCoordinates a list of lists of coordinates for the various rotations of a piece
      */
-    public Piece(ArrayList<ArrayList<ArrayList<Integer>>> passedCoordinates) {
+    public Piece(ArrayList<ArrayList<Coordinate>> passedCoordinates) {
         coordinates = passedCoordinates;
         size = passedCoordinates.get(0).size();
     }
 
+    private boolean containsCoordinate(ArrayList<Coordinate> list, Coordinate coordinate) {
+        for(Coordinate listItem: list) {
+            if(listItem.equals(coordinate)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * checks whether the passed Coordinates match the piece, for all rotations
-     * @param passedCoordinates coordinates of a players click
+     * @param clicks coordinates of a players click
      * @return a boolean: true if matches the piece, false otherwise
      */
-    public boolean isPiece(ArrayList<ArrayList<Integer>> passedCoordinates) {
+    public boolean isPiece(ArrayList<Coordinate> clicks) {
         // if the piece is the right size
-        if (passedCoordinates.size() == size) {
+        if (clicks.size() == size) {
             // for each rotation
-            for (ArrayList<ArrayList<Integer>> rotation : coordinates) {
+            for (ArrayList<Coordinate> rotation : coordinates) {
 
                 // check if all blocks match, if so true, if not repeat for next rotation
                 boolean matches = true;
-                for (ArrayList<Integer> coordinate : passedCoordinates) {
-                    if (!rotation.contains(coordinate)) {
+                for (Coordinate click : clicks) {
+                    if (!containsCoordinate(rotation, click)) {
                         matches = false;
                     }
                 }

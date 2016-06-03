@@ -115,12 +115,14 @@ public class Player {
      * @param playedPiece the Piece object that the player just played
      * @return true or false
      */
-    public boolean hasPiece(Piece playedPiece) {
-        if (myPieces.contains(playedPiece)) {
-            return true;
-        } else {
-            return false;
+    public boolean hasPiece(ArrayList<Coordinate> clicks) {
+        for (Piece piece: myPieces) {
+            if(piece.isPiece(clicks)) {
+                myPieces.remove(piece);
+                return true;
+            }
         }
+        return false;
     }
 
     /**

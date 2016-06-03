@@ -15,7 +15,7 @@ import java.util.Arrays;
  */
 public class Board {
     // A two dimensional array to represent the board
-    private String[][] board = new String[20][20];
+    private Player[][] board = new Player[20][20];
 
     /**
      * constructor for the board, does nothing
@@ -29,9 +29,9 @@ public class Board {
      * @param clicks the coordinates of a players clicks
      * @param currentPlayer the currentPlayer
      */
-    public void addClicksToBoard(ArrayList<ArrayList<Integer>> clicks, Player currentPlayer) {
-        for(ArrayList<Integer> click: clicks) {
-            board[click.get(0)][click.get(1)] = currentPlayer.getName();
+    public void addClicksToBoard(ArrayList<Coordinate> clicks, Player currentPlayer) {
+        for(Coordinate click: clicks) {
+            board[click.x][click.y] = currentPlayer;
         }
     }
 
@@ -41,10 +41,28 @@ public class Board {
      * @param currentPlayer the currentPlayer
      * @return a boolean: true if clicks are possible, false otherwise
      */
-    public boolean checkValidPlacement(ArrayList<ArrayList<Integer>> clicks, Player currentPlayer) {
-        return true;
+    public boolean checkValidPlacement(ArrayList<GridCell> clicks, Player currentPlayer) {
+        boolean diagonal = false;
+        for (GridCell square: clicks) {
+            int x = square.getX();
+            int y = square.getY();
+            if (!isPlayer(x + 1, y + 1, currentPlayer) && !isPlayer(x - 1, y + 1, currentPlayer)
+                    && !isPlayer(x - 1, y - 1, currentPlayer) && !isPlayer(x + 1, y - 1, currentPlayer)) {
+                diagonal = true;
+            }
+        }
+        return diagonal;
     }
 
+
+    private boolean isPlayer(int x, int y, Player player){
+        if(x < 0 || x > 19 || y < 0 || y > 19 ) {
+            return true;
+        } else if(board[x][y] == player) {
+            return false;
+        }
+        return true;
+    }
     /**
      *  checks if a click is “valid” aka not adjacent to another of that players pieces
      * @param x the coordinates of a click
@@ -54,7 +72,11 @@ public class Board {
      */
     public boolean checkClick(int x, int y, Player currentPlayer) {
 
-        return true;
+        if(board[x][y] == null && isPlayer(x+1, y, currentPlayer) && isPlayer(x-1, y, currentPlayer)
+                && isPlayer(x, y+1, currentPlayer) && isPlayer(x, y-1, currentPlayer)) {
+            return true;
+        }
+        return false;
     }
 
 

@@ -80,7 +80,7 @@ public class Controller implements EventHandler<KeyEvent> {
      */
     public void handleClick(int x, int y, Pane pane) {
         if (board.checkClick(x, y, currentPlayer)) {
-            clicks.add(new GridCell(x, y, pane, currentPlayer));
+            clicks.add(new GridCell(x, y, pane));
         }
     }
 
@@ -107,9 +107,8 @@ public class Controller implements EventHandler<KeyEvent> {
      * @param piece the piece that the player added to the board
      * @return true if placement of piece is valid
      */
-    public boolean checkValidPiece(Piece piece) {
-        ArrayList<ArrayList<Integer>> clicks = new ArrayList<ArrayList<Integer>>();
-        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(piece)) {
+    public boolean checkValidPiece() {
+        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
             return true;
         } else {
             return false;
