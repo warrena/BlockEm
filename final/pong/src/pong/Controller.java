@@ -104,7 +104,6 @@ public class Controller implements EventHandler<KeyEvent> {
      * can be played at that location on the board (that the piece connects to the
      * corner of another piece from that player) and is a piece that the player has.
      * If both of these conditions are true, it returns true.
-     * @param piece the piece that the player added to the board
      * @return true if placement of piece is valid
      */
     public boolean checkValidPiece() {

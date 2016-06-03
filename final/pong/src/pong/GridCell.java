@@ -13,9 +13,9 @@ public class GridCell {
     private Pane cell;
 
     public GridCell(int x, int y, Pane cell) {
-        x = x;
-        y = y;
-        cell = cell;
+        this.x = x;
+        this.y = y;
+        this.cell = cell;
 
     }
 
@@ -25,5 +25,9 @@ public class GridCell {
 
     public int getY() {
         return y;
+    }
+
+    public Pane getPane() {
+        return cell;
     }
 }

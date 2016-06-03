@@ -13,8 +13,8 @@ public class Coordinate {
         y = y;
     }
 
-    public boolean equals(Coordinate coordinate) {
-        if(coordinate.x == x && coordinate.y == y) {
+    public boolean equals(GridCell coordinate) {
+        if(coordinate.getX() == x && coordinate.getY() == y) {
             return true;
         }
         return false;

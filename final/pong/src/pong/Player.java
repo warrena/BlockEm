@@ -112,10 +112,10 @@ public class Player {
      * Returns true if the piece that the player wants to play
      * is in their list/repository of pieces, meaning the player
      * has not already played that piece
-     * @param playedPiece the Piece object that the player just played
+     * @param clicks a set of all the coordinates a player just placed
      * @return true or false
      */
-    public boolean hasPiece(ArrayList<Coordinate> clicks) {
+    public boolean hasPiece(ArrayList<GridCell> clicks) {
         for (Piece piece: myPieces) {
             if(piece.isPiece(clicks)) {
                 myPieces.remove(piece);
