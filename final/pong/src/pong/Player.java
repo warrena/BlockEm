@@ -1,5 +1,6 @@
 package pong;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,9 @@ public class Player {
     //Name of player
     String name;
 
+    //Name of player
+    Color color;
+
     //ImageView to hold png or jpg avatar
     private ImageView avatar;
 
@@ -33,10 +37,11 @@ public class Player {
      * @param name the String name of the player
      * @param avatar the avatar image for the player
      */
-    public Player(String name, ImageView avatar) {
+    public Player(String name, ImageView avatar, Color color) {
         score = 89;
         passed = false;
         this.name = name;
+        this.color = color;
         this.avatar = avatar;
         myPieces = createAllPieces();
 

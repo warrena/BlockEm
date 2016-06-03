@@ -66,7 +66,9 @@ public class Controller implements EventHandler<KeyEvent> {
                         Node src = (Node)arg0.getSource();
                         int x = grid.getRowIndex(src);
                         int y = grid.getColumnIndex(src);
-                        handleClick(x, y, cell);
+                   //     handleClick(x, y, cell);
+                        cell.setStyle("-fx-background-color:yellow;");
+                        System.out.println("Row: " + x + " Column: " + y);
                     }
                 });
             }

@@ -32,16 +32,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pong/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="80" column="63" selection-start-line="80" selection-start-column="63" selection-end-line="80" selection-end-column="63" />
+            <state relative-caret-position="195">
+              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#936#946#0" expanded="true" />
-                <element signature="e#1721#2138#0" expanded="true" />
-                <element signature="e#2137#2138#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,7 +48,7 @@
       <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pong/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="660">
               <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -62,8 +60,8 @@
       <file leaf-file-name="GridCell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pong/GridCell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+            <state relative-caret-position="195">
+              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -81,15 +79,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pong/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-              <folding>
-                <element signature="e#2036#2037#0" expanded="true" />
-                <element signature="e#2067#2068#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,8 +102,8 @@
       <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pong/sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+            <state relative-caret-position="180">
+              <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -120,9 +115,85 @@
       <file leaf-file-name="FXMLLoader.java" pinned="false" current-in-tab="false">
         <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
+            <state relative-caret-position="34365">
               <caret line="2446" column="0" selection-start-line="2446" selection-start-column="0" selection-end-line="2446" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#0#127909#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#3070#3081#0" expanded="false" />
+                <element signature="e#3171#3182#0" expanded="false" />
+                <element signature="e#3270#3281#0" expanded="false" />
+                <element signature="e#3373#3390#0" expanded="false" />
+                <element signature="e#3420#3421#0" expanded="false" />
+                <element signature="e#3460#3461#0" expanded="false" />
+                <element signature="e#6136#6137#0" expanded="false" />
+                <element signature="e#6196#6197#0" expanded="false" />
+                <element signature="e#44329#44345#0" expanded="false" />
+                <element signature="e#45176#45177#0" expanded="false" />
+                <element signature="e#45237#45238#0" expanded="false" />
+                <element signature="e#57464#57465#0" expanded="false" />
+                <element signature="e#57536#57537#0" expanded="false" />
+                <element signature="e#60338#60339#0" expanded="false" />
+                <element signature="e#60374#60375#0" expanded="false" />
+                <element signature="e#60433#60434#0" expanded="false" />
+                <element signature="e#60475#60476#0" expanded="false" />
+                <element signature="e#60989#60990#0" expanded="false" />
+                <element signature="e#61025#61026#0" expanded="false" />
+                <element signature="e#65638#65639#0" expanded="false" />
+                <element signature="e#65673#65674#0" expanded="false" />
+                <element signature="e#66695#66696#0" expanded="false" />
+                <element signature="e#66741#66742#0" expanded="false" />
+                <element signature="e#66798#66799#0" expanded="false" />
+                <element signature="e#66843#66844#0" expanded="false" />
+                <element signature="e#68308#68309#0" expanded="false" />
+                <element signature="e#68354#68355#0" expanded="false" />
+                <element signature="e#68798#68799#0" expanded="false" />
+                <element signature="e#68844#68845#0" expanded="false" />
+                <element signature="e#69249#69250#0" expanded="false" />
+                <element signature="e#69295#69296#0" expanded="false" />
+                <element signature="e#69695#69696#0" expanded="false" />
+                <element signature="e#69741#69742#0" expanded="false" />
+                <element signature="e#71645#71653#0" expanded="false" />
+                <element signature="e#71712#71730#0" expanded="false" />
+                <element signature="e#78526#78527#0" expanded="false" />
+                <element signature="e#78601#78602#0" expanded="false" />
+                <element signature="e#78704#78705#0" expanded="false" />
+                <element signature="e#78735#78736#0" expanded="false" />
+                <element signature="e#78887#78888#0" expanded="false" />
+                <element signature="e#78923#78924#0" expanded="false" />
+                <element signature="e#79125#79126#0" expanded="false" />
+                <element signature="e#79172#79173#0" expanded="false" />
+                <element signature="e#80089#80090#0" expanded="false" />
+                <element signature="e#80142#80143#0" expanded="false" />
+                <element signature="e#81469#81470#0" expanded="false" />
+                <element signature="e#81500#81501#0" expanded="false" />
+                <element signature="e#81664#81665#0" expanded="false" />
+                <element signature="e#81704#81705#0" expanded="false" />
+                <element signature="e#81840#81841#0" expanded="false" />
+                <element signature="e#81872#81873#0" expanded="false" />
+                <element signature="e#82050#82051#0" expanded="false" />
+                <element signature="e#82092#82093#0" expanded="false" />
+                <element signature="e#82217#82218#0" expanded="false" />
+                <element signature="e#82249#82250#0" expanded="false" />
+                <element signature="e#82379#82380#0" expanded="false" />
+                <element signature="e#82409#82410#0" expanded="false" />
+                <element signature="e#82808#82809#0" expanded="false" />
+                <element signature="e#82840#82841#0" expanded="false" />
+                <element signature="e#83757#83758#0" expanded="false" />
+                <element signature="e#83793#83794#0" expanded="false" />
+                <element signature="e#84717#84718#0" expanded="false" />
+                <element signature="e#84754#84755#0" expanded="false" />
+                <element signature="e#84927#84928#0" expanded="false" />
+                <element signature="e#84979#84980#0" expanded="false" />
+                <element signature="e#85147#85148#0" expanded="false" />
+                <element signature="e#85187#85188#0" expanded="false" />
+                <element signature="e#85576#85577#0" expanded="false" />
+                <element signature="e#85606#85607#0" expanded="false" />
+                <element signature="e#96630#96631#0" expanded="false" />
+                <element signature="e#96698#96699#0" expanded="false" />
+                <element signature="e#106199#106200#0" expanded="false" />
+                <element signature="e#106271#106272#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,19 +217,18 @@
       <list>
         <option value="$PROJECT_DIR$/out/production/pong/pong/sample.fxml" />
         <option value="$PROJECT_DIR$/src/pong/Main.java" />
-        <option value="$PROJECT_DIR$/src/pong/Player.java" />
         <option value="$PROJECT_DIR$/src/pong/Piece.java" />
         <option value="$PROJECT_DIR$/src/pong/GridCell.java" />
         <option value="$PROJECT_DIR$/src/pong/Ball.java" />
         <option value="$PROJECT_DIR$/src/pong/sample.fxml" />
         <option value="$PROJECT_DIR$/src/pong/Board.java" />
         <option value="$PROJECT_DIR$/src/pong/Controller.java" />
+        <option value="$PROJECT_DIR$/src/pong/Player.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="26" />
+    <option name="y" value="23" />
     <option name="width" value="1251" />
     <option name="height" value="773" />
   </component>
@@ -187,9 +257,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -228,6 +296,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -519,7 +589,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="26" width="1251" height="773" extended-state="0" />
+    <frame x="0" y="23" width="1251" height="773" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -611,28 +681,102 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#936#946#0" expanded="true" />
-            <element signature="e#1721#2138#0" expanded="true" />
-            <element signature="e#2137#2138#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pong/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
     </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34365">
           <caret line="2446" column="0" selection-start-line="2446" selection-start-column="0" selection-end-line="2446" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#127909#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3070#3081#0" expanded="false" />
+            <element signature="e#3171#3182#0" expanded="false" />
+            <element signature="e#3270#3281#0" expanded="false" />
+            <element signature="e#3373#3390#0" expanded="false" />
+            <element signature="e#3420#3421#0" expanded="false" />
+            <element signature="e#3460#3461#0" expanded="false" />
+            <element signature="e#6136#6137#0" expanded="false" />
+            <element signature="e#6196#6197#0" expanded="false" />
+            <element signature="e#44329#44345#0" expanded="false" />
+            <element signature="e#45176#45177#0" expanded="false" />
+            <element signature="e#45237#45238#0" expanded="false" />
+            <element signature="e#57464#57465#0" expanded="false" />
+            <element signature="e#57536#57537#0" expanded="false" />
+            <element signature="e#60338#60339#0" expanded="false" />
+            <element signature="e#60374#60375#0" expanded="false" />
+            <element signature="e#60433#60434#0" expanded="false" />
+            <element signature="e#60475#60476#0" expanded="false" />
+            <element signature="e#60989#60990#0" expanded="false" />
+            <element signature="e#61025#61026#0" expanded="false" />
+            <element signature="e#65638#65639#0" expanded="false" />
+            <element signature="e#65673#65674#0" expanded="false" />
+            <element signature="e#66695#66696#0" expanded="false" />
+            <element signature="e#66741#66742#0" expanded="false" />
+            <element signature="e#66798#66799#0" expanded="false" />
+            <element signature="e#66843#66844#0" expanded="false" />
+            <element signature="e#68308#68309#0" expanded="false" />
+            <element signature="e#68354#68355#0" expanded="false" />
+            <element signature="e#68798#68799#0" expanded="false" />
+            <element signature="e#68844#68845#0" expanded="false" />
+            <element signature="e#69249#69250#0" expanded="false" />
+            <element signature="e#69295#69296#0" expanded="false" />
+            <element signature="e#69695#69696#0" expanded="false" />
+            <element signature="e#69741#69742#0" expanded="false" />
+            <element signature="e#71645#71653#0" expanded="false" />
+            <element signature="e#71712#71730#0" expanded="false" />
+            <element signature="e#78526#78527#0" expanded="false" />
+            <element signature="e#78601#78602#0" expanded="false" />
+            <element signature="e#78704#78705#0" expanded="false" />
+            <element signature="e#78735#78736#0" expanded="false" />
+            <element signature="e#78887#78888#0" expanded="false" />
+            <element signature="e#78923#78924#0" expanded="false" />
+            <element signature="e#79125#79126#0" expanded="false" />
+            <element signature="e#79172#79173#0" expanded="false" />
+            <element signature="e#80089#80090#0" expanded="false" />
+            <element signature="e#80142#80143#0" expanded="false" />
+            <element signature="e#81469#81470#0" expanded="false" />
+            <element signature="e#81500#81501#0" expanded="false" />
+            <element signature="e#81664#81665#0" expanded="false" />
+            <element signature="e#81704#81705#0" expanded="false" />
+            <element signature="e#81840#81841#0" expanded="false" />
+            <element signature="e#81872#81873#0" expanded="false" />
+            <element signature="e#82050#82051#0" expanded="false" />
+            <element signature="e#82092#82093#0" expanded="false" />
+            <element signature="e#82217#82218#0" expanded="false" />
+            <element signature="e#82249#82250#0" expanded="false" />
+            <element signature="e#82379#82380#0" expanded="false" />
+            <element signature="e#82409#82410#0" expanded="false" />
+            <element signature="e#82808#82809#0" expanded="false" />
+            <element signature="e#82840#82841#0" expanded="false" />
+            <element signature="e#83757#83758#0" expanded="false" />
+            <element signature="e#83793#83794#0" expanded="false" />
+            <element signature="e#84717#84718#0" expanded="false" />
+            <element signature="e#84754#84755#0" expanded="false" />
+            <element signature="e#84927#84928#0" expanded="false" />
+            <element signature="e#84979#84980#0" expanded="false" />
+            <element signature="e#85147#85148#0" expanded="false" />
+            <element signature="e#85187#85188#0" expanded="false" />
+            <element signature="e#85576#85577#0" expanded="false" />
+            <element signature="e#85606#85607#0" expanded="false" />
+            <element signature="e#96630#96631#0" expanded="false" />
+            <element signature="e#96698#96699#0" expanded="false" />
+            <element signature="e#106199#106200#0" expanded="false" />
+            <element signature="e#106271#106272#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -659,31 +803,29 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#936#946#0" expanded="true" />
-            <element signature="e#1721#2138#0" expanded="true" />
-            <element signature="e#2137#2138#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pong/pong.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/pong/pong/sample.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/pong/pong/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/javafx-src.zip!/javafx/scene/layout/GridPane.java">
@@ -694,12 +836,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/pong/pong.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="2446" column="0" selection-start-line="2446" selection-start-column="0" selection-end-line="2446" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="30" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pong/Main.java">
@@ -710,13 +855,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pong/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/pong/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+        <state relative-caret-position="660">
+          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
           <folding>
-            <element signature="e#2036#2037#0" expanded="true" />
-            <element signature="e#2067#2068#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -737,42 +881,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pong/Board.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
+        <state relative-caret-position="34365">
+          <caret line="2446" column="0" selection-start-line="2446" selection-start-column="0" selection-end-line="2446" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#127909#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3070#3081#0" expanded="false" />
+            <element signature="e#3171#3182#0" expanded="false" />
+            <element signature="e#3270#3281#0" expanded="false" />
+            <element signature="e#3373#3390#0" expanded="false" />
+            <element signature="e#3420#3421#0" expanded="false" />
+            <element signature="e#3460#3461#0" expanded="false" />
+            <element signature="e#6136#6137#0" expanded="false" />
+            <element signature="e#6196#6197#0" expanded="false" />
+            <element signature="e#44329#44345#0" expanded="false" />
+            <element signature="e#45176#45177#0" expanded="false" />
+            <element signature="e#45237#45238#0" expanded="false" />
+            <element signature="e#57464#57465#0" expanded="false" />
+            <element signature="e#57536#57537#0" expanded="false" />
+            <element signature="e#60338#60339#0" expanded="false" />
+            <element signature="e#60374#60375#0" expanded="false" />
+            <element signature="e#60433#60434#0" expanded="false" />
+            <element signature="e#60475#60476#0" expanded="false" />
+            <element signature="e#60989#60990#0" expanded="false" />
+            <element signature="e#61025#61026#0" expanded="false" />
+            <element signature="e#65638#65639#0" expanded="false" />
+            <element signature="e#65673#65674#0" expanded="false" />
+            <element signature="e#66695#66696#0" expanded="false" />
+            <element signature="e#66741#66742#0" expanded="false" />
+            <element signature="e#66798#66799#0" expanded="false" />
+            <element signature="e#66843#66844#0" expanded="false" />
+            <element signature="e#68308#68309#0" expanded="false" />
+            <element signature="e#68354#68355#0" expanded="false" />
+            <element signature="e#68798#68799#0" expanded="false" />
+            <element signature="e#68844#68845#0" expanded="false" />
+            <element signature="e#69249#69250#0" expanded="false" />
+            <element signature="e#69295#69296#0" expanded="false" />
+            <element signature="e#69695#69696#0" expanded="false" />
+            <element signature="e#69741#69742#0" expanded="false" />
+            <element signature="e#71645#71653#0" expanded="false" />
+            <element signature="e#71712#71730#0" expanded="false" />
+            <element signature="e#78526#78527#0" expanded="false" />
+            <element signature="e#78601#78602#0" expanded="false" />
+            <element signature="e#78704#78705#0" expanded="false" />
+            <element signature="e#78735#78736#0" expanded="false" />
+            <element signature="e#78887#78888#0" expanded="false" />
+            <element signature="e#78923#78924#0" expanded="false" />
+            <element signature="e#79125#79126#0" expanded="false" />
+            <element signature="e#79172#79173#0" expanded="false" />
+            <element signature="e#80089#80090#0" expanded="false" />
+            <element signature="e#80142#80143#0" expanded="false" />
+            <element signature="e#81469#81470#0" expanded="false" />
+            <element signature="e#81500#81501#0" expanded="false" />
+            <element signature="e#81664#81665#0" expanded="false" />
+            <element signature="e#81704#81705#0" expanded="false" />
+            <element signature="e#81840#81841#0" expanded="false" />
+            <element signature="e#81872#81873#0" expanded="false" />
+            <element signature="e#82050#82051#0" expanded="false" />
+            <element signature="e#82092#82093#0" expanded="false" />
+            <element signature="e#82217#82218#0" expanded="false" />
+            <element signature="e#82249#82250#0" expanded="false" />
+            <element signature="e#82379#82380#0" expanded="false" />
+            <element signature="e#82409#82410#0" expanded="false" />
+            <element signature="e#82808#82809#0" expanded="false" />
+            <element signature="e#82840#82841#0" expanded="false" />
+            <element signature="e#83757#83758#0" expanded="false" />
+            <element signature="e#83793#83794#0" expanded="false" />
+            <element signature="e#84717#84718#0" expanded="false" />
+            <element signature="e#84754#84755#0" expanded="false" />
+            <element signature="e#84927#84928#0" expanded="false" />
+            <element signature="e#84979#84980#0" expanded="false" />
+            <element signature="e#85147#85148#0" expanded="false" />
+            <element signature="e#85187#85188#0" expanded="false" />
+            <element signature="e#85576#85577#0" expanded="false" />
+            <element signature="e#85606#85607#0" expanded="false" />
+            <element signature="e#96630#96631#0" expanded="false" />
+            <element signature="e#96698#96699#0" expanded="false" />
+            <element signature="e#106199#106200#0" expanded="false" />
+            <element signature="e#106271#106272#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pong/pong.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pong/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        <state relative-caret-position="180">
+          <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pong/GridCell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+        <state relative-caret-position="195">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -781,14 +988,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pong/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="80" column="63" selection-start-line="80" selection-start-column="63" selection-end-line="80" selection-end-column="63" />
+        <state relative-caret-position="195">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#936#946#0" expanded="true" />
-            <element signature="e#1721#2138#0" expanded="true" />
-            <element signature="e#2137#2138#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pong/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
