@@ -174,10 +174,10 @@ public class Controller implements EventHandler<KeyEvent> {
     }
 
     private void updateScore() {
-        playerOneScore.setText(String.valueOf(players.get(0).getScore()));
-        playerTwoScore.setText(String.valueOf(players.get(1).getScore()));
-        playerThreeScore.setText(String.valueOf(players.get(2).getScore()));
-        playerFourScore.setText(String.valueOf(players.get(3).getScore()));
+        playerOneScore.setText("Player One Score: " + String.valueOf(players.get(0).getScore()));
+        playerTwoScore.setText("Player Two Score: " + String.valueOf(players.get(1).getScore()));
+        playerThreeScore.setText("Player Three Score: " + String.valueOf(players.get(2).getScore()));
+        playerFourScore.setText("Player Four Score: " + String.valueOf(players.get(3).getScore()));
     }
 
     /**
