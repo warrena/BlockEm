@@ -10,10 +10,11 @@ import static jdk.nashorn.internal.objects.ArrayBufferView.length;
  */
 public class Piece {
     // a list of all the possible coordinates (for different rotations)
-    ArrayList<ArrayList<Coordinate>> coordinates;
+    ArrayList<ArrayList<Coordinate>> rotations;
 
     // number of blocks in piece
     int size;
+    String name;
 
 
     /**
@@ -21,9 +22,10 @@ public class Piece {
      * the coodinates and calculates the size of the piecesg
      * @param passedCoordinates a list of lists of coordinates for the various rotations of a piece
      */
-    public Piece(ArrayList<ArrayList<Coordinate>> passedCoordinates) {
-        coordinates = passedCoordinates;
+    public Piece(ArrayList<ArrayList<Coordinate>> passedCoordinates, String name) {
+        rotations = passedCoordinates;
         size = passedCoordinates.get(0).size();
+        this.name = name;
     }
 
     /**
@@ -51,7 +53,7 @@ public class Piece {
         // if the piece is the right size
         if (clicks.size() == size) {
             // for each rotation
-            for (ArrayList<Coordinate> rotation : coordinates) {
+            for (ArrayList<Coordinate> rotation : rotations) {
                 // check if all blocks match, if so true, if not repeat for next rotation
                 boolean matches = true;
                 for (Coordinate click : clicks) {
