@@ -8,11 +8,54 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
 <AnchorPane fx:controller="blockem.Controller" xmlns:fx="http://javafx.com/fxml">
+
+    <FlowPane prefHeight="800" prefWidth="200" orientation="vertical" alignment="CENTER_RIGHT" prefWrapLength="200"  columnHalignment="CENTER">
+        <padding>
+            <Insets top="-350" left="450"/>
+        </padding>
+
+        <Label text="Player1: 100" id="playerOneScore">
+            <graphic>
+                <ImageView id="playerOneAvatar" fitHeight="50" fitWidth="40">
+                    <Image url="@res/blue.jpg"/>
+                </ImageView>
+            </graphic>
+        </Label>
+
+        <Label text="Player2: 100" id="playerTwoScore">
+            <graphic>
+                <ImageView id="playerTwoAvatar" fitHeight="50" fitWidth="40">
+                    <Image url="@res/purple.jpg"/>
+                </ImageView>
+            </graphic>
+        </Label>
+
+        <Label text="Player3: 100" id="playerThreeScore">
+            <graphic>
+                <ImageView id="playerThreeAvatar" fitHeight="50" fitWidth="40">
+                    <Image url="@res/green.jpg"/>
+                </ImageView>
+            </graphic>
+        </Label>
+
+        <Label text="Player4: 89" id="playerFourScore">
+            <graphic>
+                <ImageView id="playerFourAvatar" fitHeight="50" fitWidth="40">
+                    <Image url="@res/red.jpg"/>
+                </ImageView>
+            </graphic>
+        </Label>
+
+    </FlowPane>
     <GridPane alignment="TOP_LEFT" gridLinesVisible="true" fx:id="grid">
 
-        <padding><Insets top="25" right="25" bottom="50" left="25"/></padding>
+        <padding><Insets
+                top="25" right="25" bottom="50" left="25"/></padding>
 
     </GridPane>
 
