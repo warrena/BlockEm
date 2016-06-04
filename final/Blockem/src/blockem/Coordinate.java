@@ -16,9 +16,16 @@ public class Coordinate extends Object {
     public boolean equals(Object someObject) {
         if (someObject instanceof Coordinate) {
             Coordinate coordinate = (Coordinate)someObject;
-            if(coordinate.x == x && coordinate.x == y) {
+            if(coordinate.x == x && coordinate.y == y) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public boolean equalsCoordinate(Coordinate passedCoordinate) {
+        if(passedCoordinate.x == x && passedCoordinate.y == y) {
+            return true;
         }
         return false;
     }

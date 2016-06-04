@@ -36,7 +36,7 @@ public class Piece {
      */
     private boolean containsCoordinate(ArrayList<Coordinate> list, Coordinate coordinate) {
         for(Coordinate listItem: list) {
-            if(listItem.equals(coordinate)) {
+            if(listItem.equalsCoordinate(coordinate)) {
                 return true;
             }
         }
