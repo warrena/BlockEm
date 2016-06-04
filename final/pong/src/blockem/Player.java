@@ -155,11 +155,40 @@ public class Player {
      * (which describe the shape of each piece)
      * @return ArrayList containing 21 Pieces
      */
-    public ArrayList<Piece> createAllPieces() {
+   public ArrayList<Piece> createAllPieces(String blockFile) {
         //Piece l4 = new Piece([0, 0],[1, 1],[1, 2]);
         //n, v5, t5, u, l5, i5, z5, y, w, p, x, f, z4, i4, l4, o, t4, i3, v3, 2, 1
+        File file = new File(blockFile);
         ArrayList<Piece> allPieces = new ArrayList<Piece>();
+        try {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String name = line;
+                line = scanner.nextLine();
+                ArrayList<ArrayList<Coordinate>> pieceCoordinates = new ArrayList<ArrayList<Coordinate>>();
+                while (!line.equals("") && !line.equals("End")) {
+                    line = line.replaceAll("\\)", "");
+                    line = line.replaceAll("\\(", "");
+                    line = line.replaceAll(",", "");
+                    String [] values = line.split("");
+                    ArrayList<Coordinate> rotation = new ArrayList<Coordinate>();
+                    for (int j = 0; j < values.length - 1; j += 2) {
+                        Coordinate coordinate = new Coordinate(Integer.parseInt(values[j]), Integer.parseInt(values[j + 1]));
+                        rotation.add(coordinate);
+                    }
+                    pieceCoordinates.add(rotation);
+                    line = scanner.nextLine();
+                }
+                Piece piece = new Piece(pieceCoordinates, name);
+                allPieces.add(piece);
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         return allPieces;
+
     }
 
 
