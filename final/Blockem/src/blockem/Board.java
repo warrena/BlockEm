@@ -47,8 +47,8 @@ public class Board {
             int x = square.getX();
             int y = square.getY();
             // checks if has diagonal
-            if (!isPlayer(x + 1, y + 1, currentPlayer) && !isPlayer(x - 1, y + 1, currentPlayer)
-                    && !isPlayer(x - 1, y - 1, currentPlayer) && !isPlayer(x + 1, y - 1, currentPlayer)) {
+            if (isPlayer(x + 1, y + 1, currentPlayer) || isPlayer(x - 1, y + 1, currentPlayer)
+                    || isPlayer(x - 1, y - 1, currentPlayer) || isPlayer(x + 1, y - 1, currentPlayer)) {
                 diagonal = true;
             //checks if starting piece (aka corner)
             } else if ((x==0 && y == 0) || (x == 19 && y == 19) || (x == 19 && y == 0) || (x == 0 && y == 19)) {
@@ -58,14 +58,20 @@ public class Board {
         return diagonal;
     }
 
-
+    /**
+     *  Returns true if coordinate location does not have that player
+     * @param x the coordinates of a click
+     * @param y the coordinates of a click
+     * @param player the currentPlayer
+     * @return a boolean: true if click is possible, false otherwise
+     */
     private boolean isPlayer(int x, int y, Player player){
         if(x < 0 || x > 19 || y < 0 || y > 19 ) {
-            return true;
-        } else if(board[x][y] == player) {
             return false;
+        } else if(board[x][y] == player) {
+            return true;
         }
-        return true;
+        return false;
     }
     /**
      *  checks if a click is “valid” aka not adjacent to another of that players pieces
@@ -76,8 +82,8 @@ public class Board {
      */
     public boolean checkClick(int x, int y, Player currentPlayer) {
 
-        if(board[x][y] == null && isPlayer(x+1, y, currentPlayer) && isPlayer(x-1, y, currentPlayer)
-                && isPlayer(x, y+1, currentPlayer) && isPlayer(x, y-1, currentPlayer)) {
+        if(board[x][y] == null && !isPlayer(x+1, y, currentPlayer) && !isPlayer(x-1, y, currentPlayer)
+                && !isPlayer(x, y+1, currentPlayer) && !isPlayer(x, y-1, currentPlayer)) {
             return true;
         }
         return false;
