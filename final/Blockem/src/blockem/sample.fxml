@@ -21,32 +21,32 @@
 
         <Label text="Player1: 100" id="playerOneScore">
             <graphic>
-                <ImageView id="playerOneAvatar" fitHeight="50" fitWidth="40">
-                    <Image url="@res/blue.jpg"/>
+                <ImageView id="playerOneAvatar" fitHeight="50" fitWidth="50">
+                    <Image url="@res/cow.png"/>
                 </ImageView>
             </graphic>
         </Label>
 
         <Label text="Player2: 100" id="playerTwoScore">
             <graphic>
-                <ImageView id="playerTwoAvatar" fitHeight="50" fitWidth="40">
-                    <Image url="@res/purple.jpg"/>
+                <ImageView id="playerTwoAvatar" fitHeight="50" fitWidth="50">
+                    <Image url="@res/sloth.png"/>
                 </ImageView>
             </graphic>
         </Label>
 
         <Label text="Player3: 100" id="playerThreeScore">
             <graphic>
-                <ImageView id="playerThreeAvatar" fitHeight="50" fitWidth="40">
-                    <Image url="@res/green.jpg"/>
+                <ImageView id="playerThreeAvatar" fitHeight="50" fitWidth="50">
+                    <Image url="@res/moose.png"/>
                 </ImageView>
             </graphic>
         </Label>
 
-        <Label text="Player4: 89" id="playerFourScore">
+        <Label text="Player4: 100" id="playerFourScore">
             <graphic>
-                <ImageView id="playerFourAvatar" fitHeight="50" fitWidth="40">
-                    <Image url="@res/red.jpg"/>
+                <ImageView id="playerFourAvatar" fitHeight="50" fitWidth="50">
+                    <Image url="@res/penguin.png"/>
                 </ImageView>
             </graphic>
         </Label>
