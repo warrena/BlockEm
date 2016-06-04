@@ -2,6 +2,7 @@ package blockem;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -35,6 +36,14 @@ public class Controller implements EventHandler<KeyEvent> {
     private ImageView playerThreeAvatar;
     @FXML
     private ImageView playerFourAvatar;
+    @FXML
+    private Label playerOneScore;
+    @FXML
+    private Label playerTwoScore;
+    @FXML
+    private Label playerThreeScore;
+    @FXML
+    private Label playerFourScore;
 
     private int score;
     private boolean paused;
@@ -149,6 +158,7 @@ public class Controller implements EventHandler<KeyEvent> {
             click.getPane().setStyle(colorString);
         }
         clicks.clear();
+        updateScore();
         getNextPlayer();
 
 //        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
@@ -161,6 +171,13 @@ public class Controller implements EventHandler<KeyEvent> {
 //                click.getPane().setStyle("-fx-background-color:orange;");
 //            }
 //        }
+    }
+
+    private void updateScore() {
+        playerOneScore.setText(String.valueOf(players.get(0).getScore()));
+        playerTwoScore.setText(String.valueOf(players.get(1).getScore()));
+        playerThreeScore.setText(String.valueOf(players.get(2).getScore()));
+        playerFourScore.setText(String.valueOf(players.get(3).getScore()));
     }
 
     /**
