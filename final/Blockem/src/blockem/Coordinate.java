@@ -6,11 +6,10 @@ package blockem;
 public class Coordinate extends Object {
     int x;
     int y;
-    Player player;
 
     public Coordinate(int x, int y) {
-        x = x;
-        y = y;
+        this.x = x;
+        this.y = y;
     }
 
     @Override

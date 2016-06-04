@@ -127,8 +127,24 @@ public class Player {
 
     private ArrayList<Coordinate> transformCoordinates(ArrayList<GridCell> clicks) {
         ArrayList<Coordinate> transformed_coordinates = new ArrayList<Coordinate>();
+        int lowest_x = 19;
+        int lowest_y = 19;
         for(GridCell click: clicks) {
-            transformed_coordinates.add(new Coordinate(click.getX(), click.getY()));
+            if(click.getX() < lowest_x) {
+                lowest_x = click.getX();
+            }
+            if(click.getY() < lowest_y) {
+                lowest_y = click.getY();
+            }
+        }
+
+        for(GridCell click: clicks) {
+            int x = click.getX();
+            int newx = x - lowest_x;
+            int y = click.getY();
+            int newy = y - lowest_y;
+            Coordinate cool_coord = new Coordinate(newx, newy);
+            transformed_coordinates.add(cool_coord);
         }
         return  transformed_coordinates;
     }

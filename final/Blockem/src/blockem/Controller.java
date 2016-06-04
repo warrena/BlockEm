@@ -32,7 +32,7 @@ public class Controller implements EventHandler<KeyEvent> {
     ArrayList<Player> players = new ArrayList<Player>();
     Player currentPlayer;
     int numberPassed = 0;
-    Board board;
+    Board board = new Board();
     ArrayList<GridCell> clicks = new ArrayList<GridCell>();
 
 
@@ -102,16 +102,15 @@ public class Controller implements EventHandler<KeyEvent> {
      * Does all that needs to be done when a cell is clicked
      */
     public void handleClick(Pane pane) {
-        int x = grid.getRowIndex(pane);
-        int y = grid.getColumnIndex(pane);
+        int y = grid.getRowIndex(pane);
+        int x = grid.getColumnIndex(pane);
         System.out.println("Row: " + x + " Column: " + y);
-        String colorString = "-fx-background-color:" + currentPlayer.getMutedColorString() + ";";
-        pane.setStyle(colorString);
-        clicks.add(new GridCell(x, y, pane));
-
-//        if (board.checkClick(x, y, currentPlayer)) {
-//            clicks.add(new GridCell(x, y, pane));
-//        }
+        if (board.checkClick(x, y, currentPlayer)) {
+            // -------- ADD -------  Now check to make sure haven't already clicked there
+            String colorString = "-fx-background-color:" + currentPlayer.getMutedColorString() + ";";
+            pane.setStyle(colorString);
+            clicks.add(new GridCell(x, y, pane));
+        }
     }
 
     @Override
@@ -143,24 +142,22 @@ public class Controller implements EventHandler<KeyEvent> {
      */
     @FXML
     public void checkValidPiece() {
-        for(GridCell click: clicks) {
-            String colorString = "-fx-background-color:" + currentPlayer.getColorString() + ";";
-            click.getPane().setStyle(colorString);
+        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
+            // changes color
+            for(GridCell click: clicks) {
+                String colorString = "-fx-background-color:" + currentPlayer.getColorString() + ";";
+                click.getPane().setStyle(colorString);
+            }
+            board.addClicksToBoard(clicks, currentPlayer);
+            clicks.clear();
+            // ----- ADD ------  updateScore();
+            getNextPlayer();
+        } else {
+            for(GridCell click: clicks) {
+                click.getPane().setStyle("-fx-background-color:none;");
+            }
+            clicks.clear();
         }
-        clicks.clear();
-        //updateScore();
-        getNextPlayer();
-
-//        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
-//            board.addClicksToBoard(clicks, currentPlayer);
-//            for(GridCell click: clicks) {
-//                click.getPane().setStyle("-fx-background-color:orange;");
-//            }
-//        } else {
-//            for(GridCell click: clicks) {
-//                click.getPane().setStyle("-fx-background-color:orange;");
-//            }
-//        }
     }
 
     private void updateScore() {

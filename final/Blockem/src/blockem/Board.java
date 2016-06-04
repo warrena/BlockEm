@@ -46,8 +46,12 @@ public class Board {
         for (GridCell square: clicks) {
             int x = square.getX();
             int y = square.getY();
+            // checks if has diagonal
             if (!isPlayer(x + 1, y + 1, currentPlayer) && !isPlayer(x - 1, y + 1, currentPlayer)
                     && !isPlayer(x - 1, y - 1, currentPlayer) && !isPlayer(x + 1, y - 1, currentPlayer)) {
+                diagonal = true;
+            //checks if starting piece (aka corner)
+            } else if ((x==0 && y == 0) || (x == 19 && y == 19) || (x == 19 && y == 0) || (x == 0 && y == 19)) {
                 diagonal = true;
             }
         }
