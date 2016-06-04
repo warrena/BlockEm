@@ -26,7 +26,13 @@ public class Piece {
         size = passedCoordinates.get(0).size();
     }
 
-    private boolean containsCoordinate(ArrayList<Coordinate> list, GridCell coordinate) {
+    /**
+     * Takes in a list of coordinates and checks if it contains a match for a single passed coordinate
+     * @param list a list of lists of coordinates for the various rotations of a piece
+     * @param coordinate a list of lists of coordinates for the various rotations of a piece
+     * @return a boolean: true if contains, false otherwise
+     */
+    private boolean containsCoordinate(ArrayList<Coordinate> list, Coordinate coordinate) {
         for(Coordinate listItem: list) {
             if(listItem.equals(coordinate)) {
                 return true;
@@ -35,20 +41,21 @@ public class Piece {
         return false;
     }
 
+
     /**
      * checks whether the passed Coordinates match the piece, for all rotations
      * @param clicks coordinates of a players click
      * @return a boolean: true if matches the piece, false otherwise
      */
-    public boolean isPiece(ArrayList<GridCell> clicks) {
+    public boolean isPiece(ArrayList<Coordinate> clicks) {
         // if the piece is the right size
         if (clicks.size() == size) {
             // for each rotation
             for (ArrayList<Coordinate> rotation : coordinates) {
-
                 // check if all blocks match, if so true, if not repeat for next rotation
                 boolean matches = true;
-                for (GridCell click : clicks) {
+                for (Coordinate click : clicks) {
+                    // If the rotation doesn't contain the coordinate
                     if (!containsCoordinate(rotation, click)) {
                         matches = false;
                     }

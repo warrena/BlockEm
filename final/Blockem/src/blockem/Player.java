@@ -124,6 +124,15 @@ public class Player {
         score = score - pieceSize;
     }
 
+
+    private ArrayList<Coordinate> transformCoordinates(ArrayList<GridCell> clicks) {
+        ArrayList<Coordinate> transformed_coordinates = new ArrayList<Coordinate>();
+        for(GridCell click: clicks) {
+            transformed_coordinates.add(new Coordinate(click.getX(), click.getY()));
+        }
+        return  transformed_coordinates;
+    }
+
     /**
      * Returns true if the piece that the player wants to play
      * is in their list/repository of pieces, meaning the player
@@ -132,8 +141,9 @@ public class Player {
      * @return true or false
      */
     public boolean hasPiece(ArrayList<GridCell> clicks) {
+        ArrayList<Coordinate> transformed_coordinates = transformCoordinates(clicks);
         for (Piece piece: myPieces) {
-            if(piece.isPiece(clicks)) {
+            if(piece.isPiece(transformed_coordinates)) {
                 myPieces.remove(piece);
                 return true;
             }

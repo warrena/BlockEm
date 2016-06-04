@@ -116,6 +116,15 @@ public class Player {
         return score;
     }
 
+
+    private ArrayList<Coordinate> transformCoordinates(ArrayList<GridCell> clicks) {
+        ArrayList<Coordinate> transformed_coordinates = new ArrayList<Coordinate>();
+        for(GridCell click: clicks) {
+            transformed_coordinates.add(new Coordinate(click.getX(), click.getY()));
+        }
+        return  transformed_coordinates;
+    }
+
     /**
      * Returns the current score of the player
      * @return an int score
@@ -132,8 +141,9 @@ public class Player {
      * @return true or false
      */
     public boolean hasPiece(ArrayList<GridCell> clicks) {
+        ArrayList<Coordinate> transformed_coordinates = transformCoordinates(clicks);
         for (Piece piece: myPieces) {
-            if(piece.isPiece(clicks)) {
+            if(piece.isPiece(transformed_coordinates)) {
                 myPieces.remove(piece);
                 return true;
             }

@@ -3,7 +3,7 @@ package blockem;
 /**
  * Created by team_blockem on 6/2/16.
  */
-public class Coordinate {
+public class Coordinate extends Object {
     int x;
     int y;
     Player player;
@@ -13,9 +13,13 @@ public class Coordinate {
         y = y;
     }
 
-    public boolean equals(GridCell coordinate) {
-        if(coordinate.getX() == x && coordinate.getY() == y) {
-            return true;
+    @Override
+    public boolean equals(Object someObject) {
+        if (someObject instanceof Coordinate) {
+            Coordinate coordinate = (Coordinate)someObject;
+            if(coordinate.x == x && coordinate.x == y) {
+                return true;
+            }
         }
         return false;
     }
