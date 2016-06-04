@@ -163,6 +163,7 @@ public class Player {
         ArrayList<Coordinate> transformed_coordinates = transformCoordinates(clicks);
         for (Piece piece: myPieces) {
             if(piece.isPiece(transformed_coordinates)) {
+                updateScore(piece.getSize());
                 myPieces.remove(piece);
                 return true;
             }

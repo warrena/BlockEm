@@ -19,7 +19,7 @@
             <Insets top="-350" left="450"/>
         </padding>
 
-        <Label text="Player1: 100" id="playerOneScore">
+        <Label text="Player1: 89" fx:id="playerOneScore">
             <graphic>
                 <ImageView id="playerOneAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/cow.png"/>
@@ -27,7 +27,7 @@
             </graphic>
         </Label>
 
-        <Label text="Player2: 100" id="playerTwoScore">
+        <Label text="Player2: 89" fx:id="playerTwoScore">
             <graphic>
                 <ImageView id="playerTwoAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/sloth.png"/>
@@ -35,7 +35,7 @@
             </graphic>
         </Label>
 
-        <Label text="Player3: 100" id="playerThreeScore">
+        <Label text="Player3: 89" fx:id="playerThreeScore">
             <graphic>
                 <ImageView id="playerThreeAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/moose.png"/>
@@ -43,7 +43,7 @@
             </graphic>
         </Label>
 
-        <Label text="Player4: 100" id="playerFourScore">
+        <Label text="Player4: 89" fx:id="playerFourScore">
             <graphic>
                 <ImageView id="playerFourAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/penguin.png"/>

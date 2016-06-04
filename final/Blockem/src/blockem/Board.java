@@ -18,13 +18,6 @@ public class Board {
     private Player[][] board = new Player[20][20];
 
     /**
-     * constructor for the board, does nothing
-     */
-
-    public Board() {
-    }
-
-    /**
      * adds if a set of clicks to the board
      * @param clicks the coordinates of a players clicks
      * @param currentPlayer the currentPlayer

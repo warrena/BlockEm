@@ -37,26 +37,16 @@ public class Controller implements EventHandler<KeyEvent> {
 
 
     @FXML private GridPane grid;
-    @FXML private GridPane playerView;
+    @FXML private GridPane playersView;
     @FXML private GridPane pieceView;
-    @FXML private ImageView playerOneAvatar;
-    @FXML private ImageView playerTwoAvatar;
-    @FXML private ImageView playerThreeAvatar;
-    @FXML private ImageView playerFourAvatar;
     @FXML private Label playerOneScore;
     @FXML private Label playerTwoScore;
     @FXML private Label playerThreeScore;
     @FXML private Label playerFourScore;
-
-    private int score;
-    private boolean paused;
-    private Timer timer;
-
-    public Controller() {
-        this.paused = false;
-        this.score = 0;
-
-    }
+//    @FXML private ImageView playerOneAvatar;
+//    @FXML private ImageView playerTwoAvatar;
+//    @FXML private ImageView playerThreeAvatar;
+//    @FXML private ImageView playerFourAvatar;
 
     public void initialize() {
         // Add four players
@@ -151,6 +141,7 @@ public class Controller implements EventHandler<KeyEvent> {
             board.addClicksToBoard(clicks, currentPlayer);
             clicks.clear();
             // ----- ADD ------  updateScore();
+            updateAllScores();
             getNextPlayer();
         } else {
             for(GridCell click: clicks) {
@@ -160,7 +151,7 @@ public class Controller implements EventHandler<KeyEvent> {
         }
     }
 
-    private void updateScore() {
+    private void updateAllScores() {
         playerOneScore.setText("Player One Score: " + String.valueOf(players.get(0).getScore()));
         playerTwoScore.setText("Player Two Score: " + String.valueOf(players.get(1).getScore()));
         playerThreeScore.setText("Player Three Score: " + String.valueOf(players.get(2).getScore()));
