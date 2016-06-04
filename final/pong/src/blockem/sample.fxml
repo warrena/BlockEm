@@ -41,11 +41,11 @@
     </GridPane>
 
     <FlowPane xmlns:fx="http://javafx.com/fxml"
-              prefHeight="800" prefWidth="200" orientation="vertical" alignment="CENTER_RIGHT" prefWrapLength="200" columnHalignment="CENTER">
-
+              prefHeight="800" prefWidth="200" orientation="vertical" alignment="CENTER_RIGHT" prefWrapLength="200"
+              columnHalignment="CENTER">'
         <ImageView id="playerOneAvatar" image="blockem\res\red.png" fitHeight="150.0" fitWidth="200.0"/>
         <ImageView id="playerTwoAvatar" fitHeight="150.0" fitWidth="200.0"/>
-        <ImageView id="playerThreeAvatar" fitHeight="150.0" fitWidth="200.0"/>
+        <ImageView id="playerFourAvatar" fitHeight="150.0" fitWidth="200.0"/>
         <ImageView id="playerFourAvatar" fitHeight="150.0" fitWidth="200.0"/>
 
     </FlowPane>
