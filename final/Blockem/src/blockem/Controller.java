@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -17,6 +19,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -35,6 +39,14 @@ public class Controller implements EventHandler<KeyEvent> {
     @FXML private GridPane grid;
     @FXML private GridPane playerView;
     @FXML private GridPane pieceView;
+    @FXML private ImageView playerOneAvatar;
+    @FXML private ImageView playerTwoAvatar;
+    @FXML private ImageView playerThreeAvatar;
+    @FXML private ImageView playerFourAvatar;
+    @FXML private Label playerOneScore;
+    @FXML private Label playerTwoScore;
+    @FXML private Label playerThreeScore;
+    @FXML private Label playerFourScore;
 
     private int score;
     private boolean paused;
@@ -53,6 +65,11 @@ public class Controller implements EventHandler<KeyEvent> {
         players.add(new Player("Jeremiah", "/pic.jpg", 0, 0, 255));
         players.add(new Player("Allie", "/pic.jpg", 0, 204, 0));
         currentPlayer = players.get(0);
+
+        Image red = new Image("file:@res/red.jpg");
+        Image blue = new Image("file:@res/blue.jpg");
+        Image green = new Image("file:@res/green.jpg");
+        Image purple = new Image("file:@res/purple.jpg");
 
 
         // Creates all of the rows and columns
@@ -131,6 +148,7 @@ public class Controller implements EventHandler<KeyEvent> {
             click.getPane().setStyle(colorString);
         }
         clicks.clear();
+        //updateScore();
         getNextPlayer();
 
 //        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
@@ -143,6 +161,13 @@ public class Controller implements EventHandler<KeyEvent> {
 //                click.getPane().setStyle("-fx-background-color:orange;");
 //            }
 //        }
+    }
+
+    private void updateScore() {
+        playerOneScore.setText("Player One Score: " + String.valueOf(players.get(0).getScore()));
+        playerTwoScore.setText("Player Two Score: " + String.valueOf(players.get(1).getScore()));
+        playerThreeScore.setText("Player Three Score: " + String.valueOf(players.get(2).getScore()));
+        playerFourScore.setText("Player Four Score: " + String.valueOf(players.get(3).getScore()));
     }
 
     /**
