@@ -1,78 +1,157 @@
 package blockem;
 
-import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.VPos;
+import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import blockem.Player;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
-import java.awt.*;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import static javafx.application.Application.launch;
-
-/**
- * Controller class
- * Created on 5/26/16.
- */
 public class Controller implements EventHandler<KeyEvent> {
+    final private double FRAMES_PER_SECOND = 20.0;
+
     ArrayList<Player> players = new ArrayList<Player>();
     Player currentPlayer;
     int numberPassed = 0;
     Board board;
+    ArrayList<GridCell> clicks = new ArrayList<GridCell>();
 
 
-    /**
-    * sole constructor for this class,
-    * it initializes the players for the game, and set the current
-    * player to the first player in the list
-    */
-    public Controller(ArrayList<Player> players) {
-        //currentPlayer = players.get(0);
-        //this.players = players;
-        //addGridPane();
+    @FXML private GridPane grid;
+    @FXML private GridPane playerView;
+    @FXML private GridPane pieceView;
+
+    private int score;
+    private boolean paused;
+    private Timer timer;
+
+    public Controller() {
+        this.paused = false;
+        this.score = 0;
+
     }
 
-    /** 
-    * Returns the player whose turn is next
-    * @return player
-    */
-    public Player getNextPlayer() {
-        //getNextPlayer - returns the next player, checks allPassed and calls gameOver if valid
+    public void initialize() {
+        // Add four players
+        players.add(new Player("Jeremiah", "/pic.jpg", 255, 255, 0));
+        players.add(new Player("Allie", "/pic.jpg", 255, 0, 0));
+        players.add(new Player("Jeremiah", "/pic.jpg", 0, 0, 255));
+        players.add(new Player("Allie", "/pic.jpg", 0, 204, 0));
+        currentPlayer = players.get(0);
 
-        return null;
-    }
 
-    /** 
-    * Checks whether the piece that the player played
-    * can be played at that location on the board (that the piece connects to the 
-    * corner of another piece from that player) and is a piece that the player has.
-    * If both of these conditions are true, it returns true.
-    * @param piece the piece that the player added to the board
-    * @return true if placement of piece is valid
-    */
-    public boolean checkValidPiece(Piece piece) {
-        ArrayList<ArrayList<Integer>> clicks = new ArrayList<ArrayList<Integer>>();
-        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(piece)) {
-            return true;
-        } else {
-            return false;
+        // Creates all of the rows and columns
+        for(int i=0; i<20; i++){
+            grid.getColumnConstraints().add(new ColumnConstraints(20));
+            grid.getRowConstraints().add(new RowConstraints(20));
+        }
+
+        // creates all of the panes in the gridpane
+        for(int i=0; i<21; i++){
+            for(int j=0; j<21; j++){
+                final Pane cell = new Pane();
+                //cell.setStyle("-fx-background-color:yellow;");
+                grid.add(cell, i, j);
+
+                cell.setOnMouseClicked(new EventHandler<MouseEvent>()
+                {
+                    @Override
+                    public void handle(MouseEvent arg0)
+                    {
+                        Pane src = (Pane)arg0.getSource();
+                        handleClick(src);
+                    }
+                });
+            }
         }
     }
 
-    /** 
-    * Checks whether the current player can select a square on the game board.
-    * The player cannot select squares where a piece has already been played
-    * or which is adjacent to one of their pieces.
-    * @param x, y the coordinates of the board square the player is trying to select
-    * @return true or false
-    */
+    /**
+     * Does all that needs to be done when a cell is clicked
+     */
+    public void handleClick(Pane pane) {
+        int x = grid.getRowIndex(pane);
+        int y = grid.getColumnIndex(pane);
+        System.out.println("Row: " + x + " Column: " + y);
+        String colorString = "-fx-background-color:" + currentPlayer.getMutedColorString() + ";";
+        pane.setStyle(colorString);
+        clicks.add(new GridCell(x, y, pane));
+
+//        if (board.checkClick(x, y, currentPlayer)) {
+//            clicks.add(new GridCell(x, y, pane));
+//        }
+    }
+
+    @Override
+    public void handle(KeyEvent keyEvent) {
+
+    }
+
+    /**
+     * Returns the player whose turn is next
+     * @return player
+     */
+    public Player getNextPlayer() {
+        //getNextPlayer - returns the next player, checks allPassed and calls gameOver if valid
+        int curIndex = players.indexOf(currentPlayer);
+        if(curIndex == 3) {
+            currentPlayer = players.get(0);
+        } else {
+            currentPlayer = players.get(curIndex + 1);
+        }
+        return null;
+    }
+
+    /**
+     * Checks whether the piece that the player played
+     * can be played at that location on the board (that the piece connects to the
+     * corner of another piece from that player) and is a piece that the player has.
+     * If both of these conditions are true, it returns true.
+     * @return true if placement of piece is valid
+     */
+    @FXML
+    public void checkValidPiece() {
+        for(GridCell click: clicks) {
+            String colorString = "-fx-background-color:" + currentPlayer.getColorString() + ";";
+            click.getPane().setStyle(colorString);
+        }
+        clicks.clear();
+        getNextPlayer();
+
+//        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
+//            board.addClicksToBoard(clicks, currentPlayer);
+//            for(GridCell click: clicks) {
+//                click.getPane().setStyle("-fx-background-color:orange;");
+//            }
+//        } else {
+//            for(GridCell click: clicks) {
+//                click.getPane().setStyle("-fx-background-color:orange;");
+//            }
+//        }
+    }
+
+    /**
+     * Checks whether the current player can select a square on the game board.
+     * The player cannot select squares where a piece has already been played
+     * or which is adjacent to one of their pieces.
+     * @param x, y the coordinates of the board square the player is trying to select
+     * @return true or false
+     */
     public boolean checkValidClick(int x, int y) {
         if (board.checkClick(x,y, currentPlayer)) {
             return true;
@@ -81,11 +160,11 @@ public class Controller implements EventHandler<KeyEvent> {
         }
     }
 
-    /** 
-    * Returns true if all of the players have passed; meaning that no
-    * player can play another piece and the game is over.
-    * @return true or false
-    */
+    /**
+     * Returns true if all of the players have passed; meaning that no
+     * player can play another piece and the game is over.
+     * @return true or false
+     */
     public boolean allPassed() {
         if (numberPassed < 4) {
             return false;
@@ -93,12 +172,12 @@ public class Controller implements EventHandler<KeyEvent> {
         return true;
     }
 
-    /** 
-    * Returns the player that has won the game.
-    * This is called once the game is over, and determines the 
-    * winner by finding the player with the lowest score.
-    * @return winning player
-    */
+    /**
+     * Returns the player that has won the game.
+     * This is called once the game is over, and determines the
+     * winner by finding the player with the lowest score.
+     * @return winning player
+     */
     public Player gameOver() {
         //still need to figure out ties
         Player winningPlayer = null;
@@ -110,42 +189,4 @@ public class Controller implements EventHandler<KeyEvent> {
         }
         return winningPlayer;
     }
-
-
-    public GridPane addGridPane() {
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-
-        // Category in column 2, row 1
-        Text category = new Text("Sales:");
-        grid.add(category, 1, 0);
-
-        // Title in column 3, row 1
-        Text chartTitle = new Text("Current Year");
-        grid.add(chartTitle, 2, 0);
-
-        // Subtitle in columns 2-3, row 2
-        Text chartSubtitle = new Text("Goods and Services");
-        grid.add(chartSubtitle, 1, 1, 2, 1);
-
-        // Left label in column 1 (bottom), row 3
-        Text goodsPercent = new Text("Goods\n80%");
-        GridPane.setValignment(goodsPercent, VPos.BOTTOM);
-        grid.add(goodsPercent, 0, 2);
-
-
-        // Right label in column 4 (top), row 3
-        Text servicesPercent = new Text("Services\n20%");
-        GridPane.setValignment(servicesPercent, VPos.TOP);
-        grid.add(servicesPercent, 3, 2);
-
-        return grid;
-    }
-
-    @Override
-    public void handle(KeyEvent event) {
-        // Where mouse clicking happens!
-    }
 }
-

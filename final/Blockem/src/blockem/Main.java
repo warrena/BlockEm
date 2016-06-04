@@ -17,6 +17,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -34,6 +35,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = (Parent)loader.load();
         Controller controller = loader.getController();
+        //controller.initialize();
 
         // Set up a KeyEvent handler so we can respond to keyboard activity.
         root.setOnKeyPressed(controller);
@@ -86,7 +88,7 @@ public class Main extends Application {
         // root.setFocusTraversable(true);
 
         primaryStage.setTitle("Kinda Blockem");
-        primaryStage.setScene(new Scene(root, 700, 500));
+        primaryStage.setScene(new Scene(root, 800, 800));
         primaryStage.show();
 
         // Solution (2): once the Stage is displayed, explicitly put the focus on the root node.

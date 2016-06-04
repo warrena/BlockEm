@@ -2,21 +2,35 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.PasswordField?>
+
 <AnchorPane fx:controller="blockem.Controller" xmlns:fx="http://javafx.com/fxml">
+    <GridPane alignment="TOP_LEFT" gridLinesVisible="true" fx:id="grid">
 
-    <Button fx:id="pauseButton" text="Pause" layoutX="30" AnchorPane.topAnchor="15" onAction="#onPauseButton"/>
+        <padding><Insets top="25" right="25" bottom="50" left="25"/></padding>
 
-    <Label fx:id="scoreLabel" layoutX="120" AnchorPane.topAnchor="15" />
+    </GridPane>
 
-    <AnchorPane fx:id="gameBoard"
-                AnchorPane.topAnchor="60" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="20"
-                style="-fx-background-color: #bbb; -fx-border-color:black; -fx-border-width:1px 0px 1px 0px;">
+    <Button fx:id="finished" text="Finished!" onAction="#checkValidPiece"
+            AnchorPane.topAnchor="450" AnchorPane.leftAnchor=" 450"/>
 
-        <Ball fx:id="ball" layoutX="100" layoutY="20" radius="20" fill="green" velocityX="-7" velocityY="10" />
-        <Rectangle fx:id="paddle" AnchorPane.bottomAnchor="15" layoutX="100" width="100" height="10" fill="black" />
-    </AnchorPane>
+    <GridPane alignment="TOP_RIGHT" fx:id="playersView">
 
-    <Label AnchorPane.leftAnchor="20" AnchorPane.bottomAnchor="0"
-           text="Left: A or left-arrow (Opt-left-arrow on Mac); Right: D or right-arrow (Opt-right-arrow on Mac)" />
+
+        <padding><Insets top="20" left="420"/></padding>
+    </GridPane>
+
+    <GridPane alignment="TOP_LEFT" fx:id="pieceView">
+
+
+        <padding><Insets top="800" left="25" bottom="25"/></padding>
+    </GridPane>
 
 </AnchorPane>
+
+

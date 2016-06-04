@@ -26,7 +26,7 @@
         <padding><Insets top="20" left="420"/></padding>
     </GridPane>
 
-    <GridPane alignment="TOP_LEFT" fx:id="playersView">
+    <GridPane alignment="TOP_LEFT" fx:id="pieceView">
 
 
         <padding><Insets top="800" left="25" bottom="25"/></padding>
