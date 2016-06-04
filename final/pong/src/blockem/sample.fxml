@@ -2,7 +2,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.shape.Rectangle?>
-<?import pong.Ball?>
+<?import blockem.Ball?>
 <?import javafx.scene.layout.GridPane?>
 
 <?import javafx.geometry.Insets?>
@@ -12,38 +12,7 @@
 
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<AnchorPane fx:controller="pong.Controller" xmlns:fx="http://javafx.com/fxml">
-    <FlowPane prefHeight="800" prefWidth="200" orientation="vertical" alignment="TOP_RIGHT" prefWrapLength="200" columnHalignment="CENTER">
-        <padding>
-            <Insets top="20" left="440"/>
-        </padding>
-        <ImageView id="playerOneAvatar" fitHeight="50.0" fitWidth="40">
-            <image>
-                <Image url="@res/green.jpg" />
-            </image>
-        </ImageView>
-
-        <ImageView id="playerTwoAvatar" fitHeight="50.0" fitWidth="40">
-            <image>
-                <Image url="@res/purple.jpg" />
-            </image>
-        </ImageView>
-
-        <ImageView id="playerThreeAvatar" fitHeight="50.0" fitWidth="40">
-            <image>
-                <Image url="@res/red.jpg" />
-            </image>
-        </ImageView>
-
-        <ImageView id="playerFourAvatar" fitHeight="50.0" fitWidth="40">
-            <image>
-                <Image url="@res/blue.jpg" />
-            </image>
-        </ImageView>
-
-
-    </FlowPane>
+<AnchorPane fx:controller="blockem.Controller" xmlns:fx="http://javafx.com/fxml">
     <GridPane alignment="TOP_LEFT" gridLinesVisible="true" fx:id="grid">
 
         <padding>
@@ -71,7 +40,15 @@
         </padding>
     </GridPane>
 
+    <FlowPane xmlns:fx="http://javafx.com/fxml"
+              prefHeight="800" prefWidth="200" orientation="vertical" alignment="CENTER_RIGHT" prefWrapLength="200" columnHalignment="CENTER">
 
+        <ImageView id="playerOneAvatar" image="blockem\res\red.png" fitHeight="150.0" fitWidth="200.0"/>
+        <ImageView id="playerTwoAvatar" fitHeight="150.0" fitWidth="200.0"/>
+        <ImageView id="playerThreeAvatar" fitHeight="150.0" fitWidth="200.0"/>
+        <ImageView id="playerFourAvatar" fitHeight="150.0" fitWidth="200.0"/>
+
+    </FlowPane>
 
 </AnchorPane>
 

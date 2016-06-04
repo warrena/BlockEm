@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/pong.iml" filepath="$PROJECT_DIR$/pong.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blockem.iml" filepath="$PROJECT_DIR$/blockem.iml" />
     </modules>
   </component>
 </project>
