@@ -19,7 +19,7 @@ public class Piece {
      * the coodinates and calculates the size of the piecesg
      * @param passedCoordinates a list of lists of coordinates for the various rotations of a piece
      */
-    public Piece(ArrayList<ArrayList<Coordinate>> passedCoordinates) {
+    public Piece(ArrayList<ArrayList<Coordinate>> passedCoordinates, String name) {
         coordinates = passedCoordinates;
         size = passedCoordinates.get(0).size();
     }
