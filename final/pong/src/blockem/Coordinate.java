@@ -14,7 +14,7 @@ public class Coordinate {
     }
 
     public boolean equals(GridCell coordinate) {
-        if (coordinate.getX() == x && coordinate.getY() == y) {
+        if(coordinate.getX() == x && coordinate.getY() == y) {
             return true;
         }
         return false;

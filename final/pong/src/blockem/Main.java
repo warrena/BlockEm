@@ -1,7 +1,7 @@
 /**
  * Main.java
  * Jeff Ondich, 19 Nov 2014
- * <p>
+ *
  * The main program for a tiny demo blockem-like program in JavaFX. The goal of
  * this program is to illustrate two techniques interacting: (1) Timer-based
  * animation, and (2) keystroke handling. As a sidelight, this demo also
@@ -22,7 +22,7 @@ import javafx.stage.WindowEvent;
 
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception{
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
@@ -32,7 +32,7 @@ public class Main extends Application {
         });
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
-        Parent root = (Parent) loader.load();
+        Parent root = (Parent)loader.load();
         Controller controller = loader.getController();
         //controller.initialize();
 
