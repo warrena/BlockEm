@@ -49,6 +49,8 @@ public class Controller implements EventHandler<KeyEvent> {
     @FXML private Label playerFourScore;
     @FXML private Label playerWon;
     @FXML private Label playerTurn;
+
+    private boolean gameOver = false;
 //    @FXML private ImageView playerOneAvatar;
 //    @FXML private ImageView playerTwoAvatar;
 //    @FXML private ImageView playerThreeAvatar;
@@ -61,7 +63,7 @@ public class Controller implements EventHandler<KeyEvent> {
         players.add(new Player("Player3", "/pic.jpg", 0, 0, 255));
         players.add(new Player("Player4", "/pic.jpg", 0, 204, 0));
         currentPlayer = players.get(0);
-        playerOneScore.setStyle("-fx-border-color: yellow;");
+        playerOneScore.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
 
 
         //pieceViewManager = new PieceViewManager(100, 50, pieceView);
@@ -106,20 +108,22 @@ public class Controller implements EventHandler<KeyEvent> {
      * Does all that needs to be done when a cell is clicked
      */
     public void handleClick(Pane pane) {
-        int y = grid.getRowIndex(pane);
-        int x = grid.getColumnIndex(pane);
-        System.out.println("Row: " + x + " Column: " + y);
-        if (board.checkClick(x, y, currentPlayer)) {
-            // -------- ADD -------  Now check to make sure haven't already clicked there
-            pane.setStyle(currentPlayer.getMutedColorString());
-            boolean notClicked = true;
-            for (GridCell currentClicks:clicks) {
-                if(currentClicks.getX() == x && currentClicks.getY() == y) {
-                    notClicked = false;
+        if(!gameOver) {
+            int y = grid.getRowIndex(pane);
+            int x = grid.getColumnIndex(pane);
+            System.out.println("Row: " + x + " Column: " + y);
+            if (board.checkClick(x, y, currentPlayer)) {
+                // -------- ADD -------  Now check to make sure haven't already clicked there
+                pane.setStyle(currentPlayer.getMutedColorString());
+                boolean notClicked = true;
+                for (GridCell currentClicks : clicks) {
+                    if (currentClicks.getX() == x && currentClicks.getY() == y) {
+                        notClicked = false;
+                    }
                 }
-            }
-            if(notClicked) {
-                clicks.add(new GridCell(x, y, pane));
+                if (notClicked) {
+                    clicks.add(new GridCell(x, y, pane));
+                }
             }
         }
     }
@@ -142,21 +146,21 @@ public class Controller implements EventHandler<KeyEvent> {
             int curIndex = players.indexOf(currentPlayer);
             if (curIndex == 3) {
                 currentPlayer = players.get(0);
-                playerOneScore.setStyle("-fx-border-color: yellow;");
-                playerFourScore.setStyle("-fx-border-color: none;");
+                playerOneScore.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
+                playerFourScore.setStyle("-fx-border-color: none; -fx-background-color: green;");
             } else {
                 currentPlayer = players.get(curIndex + 1);
                 if(curIndex == 0) {
-                    playerTwoScore.setStyle("-fx-border-color: red;");
-                    playerOneScore.setStyle("-fx-border-color: none;");
+                    playerTwoScore.setStyle("-fx-border-color: black; -fx-background-color: red;");
+                    playerOneScore.setStyle("-fx-border-color: none; -fx-background-color: yellow;");
                 }
                 if(curIndex == 1) {
-                    playerThreeScore.setStyle("-fx-border-color: blue;");
-                    playerTwoScore.setStyle("-fx-border-color: none;");
+                    playerThreeScore.setStyle("-fx-border-color: black; -fx-background-color: blue;");
+                    playerTwoScore.setStyle("-fx-border-color: none; -fx-background-color: red;");
                 }
                 if(curIndex == 2) {
-                    playerFourScore.setStyle("-fx-border-color: green;");
-                    playerThreeScore.setStyle("-fx-border-color: none;");
+                    playerFourScore.setStyle("-fx-border-color: black; -fx-background-color: green;");
+                    playerThreeScore.setStyle("-fx-border-color: none; -fx-background-color: blue;");
                 }
             }
             if (currentPlayer.passed) {
@@ -202,10 +206,10 @@ public class Controller implements EventHandler<KeyEvent> {
         pieceViewManager.resetPieces(currentPlayer);
     }
     private void updateAllScores() {
-        playerOneScore.setText("Player One Score (yellow): " + String.valueOf(players.get(0).getScore()));
-        playerTwoScore.setText("Player Two Score (red): " + String.valueOf(players.get(1).getScore()));
-        playerThreeScore.setText("Player Three Score (blue): " + String.valueOf(players.get(2).getScore()));
-        playerFourScore.setText("Player Four Score (green): " + String.valueOf(players.get(3).getScore()));
+        playerOneScore.setText("Player One Score: " + String.valueOf(players.get(0).getScore()));
+        playerTwoScore.setText("Player Two Score: " + String.valueOf(players.get(1).getScore()));
+        playerThreeScore.setText("Player Three Score: " + String.valueOf(players.get(2).getScore()));
+        playerFourScore.setText("Player Four Score: " + String.valueOf(players.get(3).getScore()));
     }
 
     /**
@@ -242,6 +246,7 @@ public class Controller implements EventHandler<KeyEvent> {
      * @return winning player
      */
     public void gameOver() {
+        gameOver = true;
         //still need to figure out ties
         ArrayList<Player> winningPlayers = new ArrayList<Player>();
         int winningScore = 100;
