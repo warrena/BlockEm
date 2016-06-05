@@ -198,8 +198,6 @@ public class Player {
         //n, v5, t5, u, l5, i5, z5, y, w, p, x, f, z4, i4, l4, o, t4, i3, v3, 2, 1
         File file = new File(blockFile);
         ArrayList<Piece> allPieces = new ArrayList<Piece>();
-        System.out.println(System.getProperty("user.dir"));
-        System.out.println(file.getAbsolutePath());
 
         try {
             Scanner scanner = new Scanner(file);

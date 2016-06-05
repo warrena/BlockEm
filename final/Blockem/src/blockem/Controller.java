@@ -116,7 +116,6 @@ public class Controller implements EventHandler<KeyEvent> {
         if(!gameOver) {
             int y = grid.getRowIndex(pane);
             int x = grid.getColumnIndex(pane);
-            System.out.println("Row: " + x + " Column: " + y);
             GridCell removeClick = null;
             if (board.checkClick(x, y, currentPlayer)) {
                 // -------- ADD -------  Now check to make sure haven't already clicked there
@@ -139,6 +138,7 @@ public class Controller implements EventHandler<KeyEvent> {
         }
     }
 
+
     @Override
     public void handle(KeyEvent keyEvent) {
 
@@ -150,7 +150,6 @@ public class Controller implements EventHandler<KeyEvent> {
      */
     public Player getNextPlayer() {
         //getNextPlayer - returns the next player, checks allPassed and calls gameOver if valid
-        System.out.println(numberPassed);
         if (allPassed()) {
             gameOver();
         } else {
@@ -275,7 +274,6 @@ public class Controller implements EventHandler<KeyEvent> {
         int winningScore = 100;
         for (Player player : players) {
             if (player.getScore() <= winningScore) {
-                System.out.println(player.getName());
                 winningPlayers.add(player);
                 winningScore = player.getScore();
             }
