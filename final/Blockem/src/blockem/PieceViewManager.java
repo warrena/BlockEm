@@ -47,8 +47,7 @@ public class PieceViewManager {
 
     }
 
-    private void drawPiece(Piece piece, int x, int y, Player player) {
-        ArrayList<Coordinate> rotation = piece.getRotations().get(0);
+    private void drawPiece(ArrayList<Coordinate> rotation, int x, int y, Player player) {
         String colorString = player.getColorString();
 
         for(Coordinate coordinate: rotation) {
@@ -68,15 +67,28 @@ public class PieceViewManager {
         int x = 0;
         int y = 0;
         for(Piece piece: player.getPieces()) {
-            drawPiece(piece, x, y, player);
+            drawPiece(piece.getRotations().get(0), x, y, player);
             x+=4;
-            if (x > 25) {
+            if (x > 41) {
                 x = 0;
                 y +=6;
             }
+        }
 
-            if(y>10) {
-                return;
+    }
+
+
+    public void debugDrawAllRotations(Player player) {
+        int x = 0;
+        int y = 0;
+        for(Piece piece: player.getPieces()) {
+            for(ArrayList<Coordinate> rotation: piece.getRotations()) {
+                drawPiece(rotation, x, y, player);
+                x += 4;
+                if (x > 80) {
+                    x = 0;
+                    y += 6;
+                }
             }
         }
 
