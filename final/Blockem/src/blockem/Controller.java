@@ -68,9 +68,11 @@ public class Controller implements EventHandler<KeyEvent> {
         Image green = new Image("file:@res/green.jpg");
         Image purple = new Image("file:@res/purple.jpg");
 
+        pieceViewManager = new PieceViewManager(100, 50, pieceView);
+        pieceViewManager.debugDrawAllRotations(currentPlayer);
 
-        pieceViewManager = new PieceViewManager(30, 15, pieceView);
-        pieceViewManager.resetPieces(currentPlayer);
+        //pieceViewManager = new PieceViewManager(43, 10, pieceView);
+        //pieceViewManager.resetPieces(currentPlayer);
 
         // INITIALIZES THE BOARD
         // Creates all of the rows and columns
@@ -190,6 +192,7 @@ public class Controller implements EventHandler<KeyEvent> {
         currentPlayer.passed = true;
         numberPassed +=1;
         getNextPlayer();
+        pieceViewManager.resetPieces(currentPlayer);
     }
     private void updateAllScores() {
         playerOneScore.setText("Player One Score (yellow): " + String.valueOf(players.get(0).getScore()));
