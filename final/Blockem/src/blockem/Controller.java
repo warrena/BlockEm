@@ -244,16 +244,33 @@ public class Controller implements EventHandler<KeyEvent> {
      */
     public void gameOver() {
         //still need to figure out ties
-        Player winningPlayer = null;
+        ArrayList<Player> winningPlayers = new ArrayList<Player>();
         int winningScore = 100;
         for (Player player : players) {
-            if (player.getScore() < winningScore) {
+            if (player.getScore() <= winningScore) {
                 System.out.println(player.getName());
-                winningPlayer = player;
-                winningScore = winningPlayer.getScore();
+                winningPlayers.add(player);
+                winningScore = player.getScore();
             }
         }
-        playerWon.setText(winningPlayer.getName() + " won!");
+        int counter = 0;
+        String winningMessage = "";
+        for (Player winners:winningPlayers) {
+            if (counter == 0) {
+                winningMessage = winners.getName();
+            }
+            else if(counter == winningPlayers.size() -1) {
+                winningMessage += " and " + winners.getName();
+            }
+            else {
+                winningMessage += ", " + winners.getName();
+            }
+            counter++;
+
+        }
+
+        playerWon.setText(winningMessage + " won!");
+
         //exit();
     }
 }
