@@ -81,7 +81,8 @@ public class Controller implements EventHandler<KeyEvent> {
         for(int i=0; i<21; i++){
             for(int j=0; j<21; j++){
                 final Pane cell = new Pane();
-                //cell.setStyle("-fx-background-color:yellow;");
+                // BACKGROUND
+                cell.setStyle("-fx-background-color: gray; -fx-border-color: black;");
                 grid.add(cell, i, j);
                 paneList.add(cell);
 
@@ -188,7 +189,8 @@ public class Controller implements EventHandler<KeyEvent> {
             pieceViewManager.resetPieces(currentPlayer);
         } else {
             for(GridCell click: clicks) {
-                click.getPane().setStyle("-fx-background-color:none;");
+                // BACKGROUND
+                click.getPane().setStyle("-fx-background-color: gray; -fx-border-color: black;");
             }
             clicks.clear();
         }
@@ -200,7 +202,14 @@ public class Controller implements EventHandler<KeyEvent> {
         numberPassed +=1;
         getNextPlayer();
         pieceViewManager.resetPieces(currentPlayer);
+        for(GridCell click: clicks) {
+            // BACKGROUND
+            click.getPane().setStyle("-fx-background-color: gray; -fx-border-color: black;");
+        }
+        clicks.clear();
     }
+
+
     private void updateAllScores() {
         playerOneScore.setText("Player One Score: " + String.valueOf(players.get(0).getScore()));
         playerTwoScore.setText("Player Two Score: " + String.valueOf(players.get(1).getScore()));
@@ -275,7 +284,8 @@ public class Controller implements EventHandler<KeyEvent> {
     private void resetGame() {
 
         for(Pane pane: paneList) {
-            pane.setStyle("-fx-background-color: none;");
+            // BACKGROUND
+            pane.setStyle("-fx-background-color: gray; -fx-border-color: black;");
         }
 
         currentPlayer = players.get(0);
