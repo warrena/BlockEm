@@ -13,17 +13,17 @@
 <?import javafx.scene.image.Image?>
 
 <AnchorPane fx:controller="blockem.Controller" xmlns:fx="http://javafx.com/fxml">
-
+    <ImageView id="backgroun" fitWidth="730" fitHeight="650">
+        <Image url="@res/tabletop.jpg"/>
+    </ImageView>
     <FlowPane prefHeight="500" prefWidth="200" orientation="vertical" fx:id="playersView"
-              alignment="TOP_RIGHT" prefWrapLength="200"  columnHalignment="LEFT">
+              alignment="TOP_RIGHT" prefWrapLength="200" vgap="30" columnHalignment="LEFT">
         <padding>
             <Insets top="35" left="470"/>
         </padding>
 
-        <Label text="Player One Score (yellow): 89" fx:id="playerOneScore" scaleY="1.2" scaleX="1.2">
-            <padding>
-                <Insets top="10" bottom="15"/>
-            </padding>
+        <Label text="Player One Score: 89" fx:id="playerOneScore" scaleY="1.2" scaleX="1.2" style="-fx-background-color: yellow">
+            <padding><Insets left="11" right ="11"/></padding>
             <graphic>
                 <ImageView id="playerOneAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/cow.png"/>
@@ -31,10 +31,8 @@
             </graphic>
         </Label>
 
-        <Label text="Player Two Score (red): 89" fx:id="playerTwoScore" scaleY="1.2" scaleX="1.2">
-            <padding>
-                <Insets top="15" bottom="15"/>
-            </padding>
+        <Label text="Player Two Score: 89" fx:id="playerTwoScore" scaleY="1.2" scaleX="1.2" style="-fx-background-color: red">
+            <padding><Insets left="11" right ="11"/></padding>
             <graphic>
                 <ImageView id="playerTwoAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/sloth.png"/>
@@ -42,10 +40,8 @@
             </graphic>
         </Label>
 
-        <Label text="Player Three Score (blue): 89" fx:id="playerThreeScore" scaleY="1.2" scaleX="1.2">
-            <padding>
-                <Insets top="15" bottom="15"/>
-            </padding>
+        <Label text="Player Three Score: 89" fx:id="playerThreeScore" scaleY="1.2" scaleX="1.2" style="-fx-background-color: blue">
+            <padding><Insets left="7" right ="7"/></padding>
             <graphic>
                 <ImageView id="playerThreeAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/moose.png"/>
@@ -53,10 +49,8 @@
             </graphic>
         </Label>
 
-        <Label text="Player Four Score (green): 89" fx:id="playerFourScore" scaleY="1.2" scaleX="1.2">
-            <padding>
-                <Insets top="15" bottom="15"/>
-            </padding>
+        <Label text="Player Four Score: 89" fx:id="playerFourScore" scaleY="1.2" scaleX="1.2" style="-fx-background-color: green">
+            <padding><Insets left="11" right ="11"/></padding>
             <graphic>
                 <ImageView id="playerFourAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/penguin.png"/>
@@ -69,22 +63,22 @@
 
     <Label text=" " fx:id="message" AnchorPane.topAnchor="430" AnchorPane.leftAnchor="25"> </Label>
 
-    <GridPane alignment="TOP_LEFT" fx:id="pieceView" gridLinesVisible="true">
+    <GridPane fx:id="pieceView" alignment="TOP_LEFT"  gridLinesVisible="true">
         <padding><Insets top="475" left="25" bottom="25"/></padding>
     </GridPane>
 
-    <GridPane alignment="TOP_LEFT" gridLinesVisible="true" fx:id="grid">
-
-        <padding><Insets
-                top="25" right="25" bottom="50" left="25"/></padding>
-
+    <GridPane fx:id="grid" alignment="TOP_LEFT" gridLinesVisible="true">
+        <padding><Insets top="25" right="25" bottom="50" left="25"/></padding>
     </GridPane>
 
     <Button fx:id="finished" text="Finished Turn" onAction="#checkValidPiece"
             AnchorPane.topAnchor="400" AnchorPane.leftAnchor=" 450"/>
 
     <Button fx:id="pass" text="Pass" onAction="#playerPass"
-            AnchorPane.topAnchor="400" AnchorPane.leftAnchor="600"/>
+            AnchorPane.topAnchor="400" AnchorPane.leftAnchor="565"/>
+
+    <Button id="resetButton" text="New Game" onAction="#resetGame"
+            AnchorPane.topAnchor="400" AnchorPane.leftAnchor="625"/>
 
 
 </AnchorPane>

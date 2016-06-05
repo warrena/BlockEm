@@ -40,7 +40,7 @@ public class Controller implements EventHandler<KeyEvent> {
 
 
     @FXML private GridPane grid;
-    @FXML private FlowPane playersView;
+    private ArrayList<Pane> paneList = new ArrayList<Pane>();
     @FXML private GridPane pieceView;
     private PieceViewManager pieceViewManager;
 
@@ -48,12 +48,13 @@ public class Controller implements EventHandler<KeyEvent> {
     @FXML private Label playerTwoScore;
     @FXML private Label playerThreeScore;
     @FXML private Label playerFourScore;
+
     @FXML private Label message;
     @FXML private Label playerTurn;
-//    @FXML private ImageView playerOneAvatar;
-//    @FXML private ImageView playerTwoAvatar;
-//    @FXML private ImageView playerThreeAvatar;
-//    @FXML private ImageView playerFourAvatar;
+
+    @FXML private Label playerWon;
+
+    private boolean gameOver = false;
 
     public void initialize() {
         // Add four players
@@ -63,7 +64,9 @@ public class Controller implements EventHandler<KeyEvent> {
         players.add(new Player("Player4", "/pic.jpg", 0, 204, 0));
         currentPlayer = players.get(0);
         playerOneScore.setStyle("-fx-border-color: yellow;");
-        message.setFont(Font.font(20.0));
+        message.setFont(Font.font("Arial Black", 18.0));
+        playerOneScore.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
+
 
 
         //pieceViewManager = new PieceViewManager(100, 50, pieceView);
@@ -86,8 +89,10 @@ public class Controller implements EventHandler<KeyEvent> {
         for(int i=0; i<21; i++){
             for(int j=0; j<21; j++){
                 final Pane cell = new Pane();
-                //cell.setStyle("-fx-background-color:yellow;");
+                // BACKGROUND
+                cell.setStyle("-fx-background-color: gray; -fx-border-color: black;");
                 grid.add(cell, i, j);
+                paneList.add(cell);
 
                 cell.setOnMouseClicked(new EventHandler<MouseEvent>()
                 {
@@ -108,22 +113,24 @@ public class Controller implements EventHandler<KeyEvent> {
      * Does all that needs to be done when a cell is clicked
      */
     public void handleClick(Pane pane) {
-        int y = grid.getRowIndex(pane);
-        int x = grid.getColumnIndex(pane);
-        System.out.println("Row: " + x + " Column: " + y);
-        if (board.checkClick(x, y, currentPlayer)) {
-            // -------- ADD -------  Now check to make sure haven't already clicked there
-            pane.setStyle(currentPlayer.getMutedColorString());
-            boolean notClicked = true;
+        if(!gameOver) {
+            int y = grid.getRowIndex(pane);
+            int x = grid.getColumnIndex(pane);
+            System.out.println("Row: " + x + " Column: " + y);
             GridCell removeClick = null;
-            for (GridCell currentClicks:clicks) {
-                if(currentClicks.getX() == x && currentClicks.getY() == y) {
-                    removeClick = currentClicks;
-                    notClicked = false;
+            if (board.checkClick(x, y, currentPlayer)) {
+                // -------- ADD -------  Now check to make sure haven't already clicked there
+                pane.setStyle(currentPlayer.getMutedColorString());
+                boolean notClicked = true;
+                for (GridCell currentClicks : clicks) {
+                    if (currentClicks.getX() == x && currentClicks.getY() == y) {
+                        notClicked = false;
+                        removeClick = currentClicks;
+                    }
                 }
-            }
-            if(notClicked) {
-                clicks.add(new GridCell(x, y, pane));
+                if (notClicked) {
+                    clicks.add(new GridCell(x, y, pane));
+                }
             }
             else {
                 clicks.remove(removeClick);
@@ -150,21 +157,21 @@ public class Controller implements EventHandler<KeyEvent> {
             int curIndex = players.indexOf(currentPlayer);
             if (curIndex == 3) {
                 currentPlayer = players.get(0);
-                playerOneScore.setStyle("-fx-border-color: yellow;");
-                playerFourScore.setStyle("-fx-border-color: none;");
+                playerOneScore.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
+                playerFourScore.setStyle("-fx-border-color: none; -fx-background-color: green;");
             } else {
                 currentPlayer = players.get(curIndex + 1);
                 if(curIndex == 0) {
-                    playerTwoScore.setStyle("-fx-border-color: red;");
-                    playerOneScore.setStyle("-fx-border-color: none;");
+                    playerTwoScore.setStyle("-fx-border-color: black; -fx-background-color: red;");
+                    playerOneScore.setStyle("-fx-border-color: none; -fx-background-color: yellow;");
                 }
                 if(curIndex == 1) {
-                    playerThreeScore.setStyle("-fx-border-color: blue;");
-                    playerTwoScore.setStyle("-fx-border-color: none;");
+                    playerThreeScore.setStyle("-fx-border-color: black; -fx-background-color: blue;");
+                    playerTwoScore.setStyle("-fx-border-color: none; -fx-background-color: red;");
                 }
                 if(curIndex == 2) {
-                    playerFourScore.setStyle("-fx-border-color: green;");
-                    playerThreeScore.setStyle("-fx-border-color: none;");
+                    playerFourScore.setStyle("-fx-border-color: black; -fx-background-color: green;");
+                    playerThreeScore.setStyle("-fx-border-color: none; -fx-background-color: blue;");
                 }
             }
             if (currentPlayer.passed) {
@@ -198,7 +205,8 @@ public class Controller implements EventHandler<KeyEvent> {
             message.setText("");
         } else {
             for(GridCell click: clicks) {
-                click.getPane().setStyle("-fx-background-color:none;");
+                // BACKGROUND
+                click.getPane().setStyle("-fx-background-color: gray; -fx-border-color: black;");
             }
             if (!validPlacement) {
                 message.setText("Invalid Placement");
@@ -215,12 +223,19 @@ public class Controller implements EventHandler<KeyEvent> {
         numberPassed +=1;
         getNextPlayer();
         pieceViewManager.resetPieces(currentPlayer);
+        for(GridCell click: clicks) {
+            // BACKGROUND
+            click.getPane().setStyle("-fx-background-color: gray; -fx-border-color: black;");
+        }
+        clicks.clear();
     }
+
+
     private void updateAllScores() {
-        playerOneScore.setText("Player One Score (yellow): " + String.valueOf(players.get(0).getScore()));
-        playerTwoScore.setText("Player Two Score (red): " + String.valueOf(players.get(1).getScore()));
-        playerThreeScore.setText("Player Three Score (blue): " + String.valueOf(players.get(2).getScore()));
-        playerFourScore.setText("Player Four Score (green): " + String.valueOf(players.get(3).getScore()));
+        playerOneScore.setText("Player One Score: " + String.valueOf(players.get(0).getScore()));
+        playerTwoScore.setText("Player Two Score: " + String.valueOf(players.get(1).getScore()));
+        playerThreeScore.setText("Player Three Score: " + String.valueOf(players.get(2).getScore()));
+        playerFourScore.setText("Player Four Score: " + String.valueOf(players.get(3).getScore()));
     }
 
     /**
@@ -257,7 +272,7 @@ public class Controller implements EventHandler<KeyEvent> {
      * @return winning player
      */
     public void gameOver() {
-        //still need to figure out ties
+        gameOver = true;
         ArrayList<Player> winningPlayers = new ArrayList<Player>();
         int winningScore = 100;
         for (Player player : players) {
@@ -284,7 +299,32 @@ public class Controller implements EventHandler<KeyEvent> {
         }
 
         message.setText(winningMessage + " won!");
+    }
 
-        //exit();
+    @FXML
+    private void resetGame() {
+
+        for(Pane pane: paneList) {
+            // BACKGROUND
+            pane.setStyle("-fx-background-color: gray; -fx-border-color: black;");
+        }
+
+        currentPlayer = players.get(0);
+        for(Player player: players) {
+            player.resetPlayer();
+        }
+        numberPassed = 0;
+        updateAllScores();
+        pieceViewManager.resetPieces(currentPlayer);
+        board.resetBoard();
+        playerOneScore.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
+        playerTwoScore.setStyle("-fx-border-color: none; -fx-background-color: red;");
+        playerThreeScore.setStyle("-fx-border-color: none; -fx-background-color: blue;");
+        playerFourScore.setStyle("-fx-border-color: none; -fx-background-color: green;");
+        message.setText("");
+
+
+        gameOver = false;
+
     }
 }
