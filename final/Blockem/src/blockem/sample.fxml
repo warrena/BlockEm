@@ -20,7 +20,7 @@
             <Insets top="35" left="470"/>
         </padding>
 
-        <Label text="Player1 (yellow): 89" fx:id="playerOneScore" scaleY="1.2" scaleX="1.2">
+        <Label text="Player One Score (yellow): 89" fx:id="playerOneScore" scaleY="1.2" scaleX="1.2">
             <padding>
                 <Insets top="10" bottom="15"/>
             </padding>
@@ -31,7 +31,7 @@
             </graphic>
         </Label>
 
-        <Label text="Player2 (red): 89" fx:id="playerTwoScore" scaleY="1.2" scaleX="1.2">
+        <Label text="Player Two Score (red): 89" fx:id="playerTwoScore" scaleY="1.2" scaleX="1.2">
             <padding>
                 <Insets top="15" bottom="15"/>
             </padding>
@@ -42,7 +42,7 @@
             </graphic>
         </Label>
 
-        <Label text="Player3 (blue): 89" fx:id="playerThreeScore" scaleY="1.2" scaleX="1.2">
+        <Label text="Player Three Score (blue): 89" fx:id="playerThreeScore" scaleY="1.2" scaleX="1.2">
             <padding>
                 <Insets top="15" bottom="15"/>
             </padding>
@@ -53,7 +53,7 @@
             </graphic>
         </Label>
 
-        <Label text="Player4 (green): 89" fx:id="playerFourScore" scaleY="1.2" scaleX="1.2">
+        <Label text="Player Four Score (green): 89" fx:id="playerFourScore" scaleY="1.2" scaleX="1.2">
             <padding>
                 <Insets top="15" bottom="15"/>
             </padding>

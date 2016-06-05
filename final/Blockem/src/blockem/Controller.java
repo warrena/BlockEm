@@ -61,7 +61,7 @@ public class Controller implements EventHandler<KeyEvent> {
         players.add(new Player("Player3", "/pic.jpg", 0, 0, 255));
         players.add(new Player("Player4", "/pic.jpg", 0, 204, 0));
         currentPlayer = players.get(0);
-        playerOneScore.setStyle("-fx-border-color: black;");
+        playerOneScore.setStyle("-fx-border-color: yellow;");
 
 
         //pieceViewManager = new PieceViewManager(100, 50, pieceView);
@@ -142,20 +142,20 @@ public class Controller implements EventHandler<KeyEvent> {
             int curIndex = players.indexOf(currentPlayer);
             if (curIndex == 3) {
                 currentPlayer = players.get(0);
-                playerOneScore.setStyle("-fx-border-color: black;");
+                playerOneScore.setStyle("-fx-border-color: yellow;");
                 playerFourScore.setStyle("-fx-border-color: none;");
             } else {
                 currentPlayer = players.get(curIndex + 1);
                 if(curIndex == 0) {
-                    playerTwoScore.setStyle("-fx-border-color: black;");
+                    playerTwoScore.setStyle("-fx-border-color: red;");
                     playerOneScore.setStyle("-fx-border-color: none;");
                 }
                 if(curIndex == 1) {
-                    playerThreeScore.setStyle("-fx-border-color: black;");
+                    playerThreeScore.setStyle("-fx-border-color: blue;");
                     playerTwoScore.setStyle("-fx-border-color: none;");
                 }
                 if(curIndex == 2) {
-                    playerFourScore.setStyle("-fx-border-color: black;");
+                    playerFourScore.setStyle("-fx-border-color: green;");
                     playerThreeScore.setStyle("-fx-border-color: none;");
                 }
             }
