@@ -14,7 +14,8 @@
 
 <AnchorPane fx:controller="blockem.Controller" xmlns:fx="http://javafx.com/fxml">
 
-    <FlowPane prefHeight="800" prefWidth="200" orientation="vertical" alignment="CENTER_RIGHT" prefWrapLength="200"  columnHalignment="CENTER">
+    <FlowPane prefHeight="800" prefWidth="200" orientation="vertical" fx:id="playersView"
+              alignment="CENTER_RIGHT" prefWrapLength="200"  columnHalignment="CENTER">
         <padding>
             <Insets top="-350" left="450"/>
         </padding>
@@ -52,6 +53,11 @@
         </Label>
 
     </FlowPane>
+
+    <GridPane alignment="TOP_LEFT" fx:id="pieceView" gridLinesVisible="true">
+        <padding><Insets top="475" left="25" bottom="25"/></padding>
+    </GridPane>
+
     <GridPane alignment="TOP_LEFT" gridLinesVisible="true" fx:id="grid">
 
         <padding><Insets
@@ -60,19 +66,9 @@
     </GridPane>
 
     <Button fx:id="finished" text="Finished!" onAction="#checkValidPiece"
-            AnchorPane.topAnchor="450" AnchorPane.leftAnchor=" 450"/>
-
-    <GridPane alignment="TOP_RIGHT" fx:id="playersView">
+            AnchorPane.topAnchor="380" AnchorPane.leftAnchor=" 450"/>
 
 
-        <padding><Insets top="20" left="420"/></padding>
-    </GridPane>
-
-    <GridPane alignment="TOP_LEFT" fx:id="pieceView">
-
-
-        <padding><Insets top="800" left="25" bottom="25"/></padding>
-    </GridPane>
 
 </AnchorPane>
 

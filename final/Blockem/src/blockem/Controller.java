@@ -37,8 +37,10 @@ public class Controller implements EventHandler<KeyEvent> {
 
 
     @FXML private GridPane grid;
-    @FXML private GridPane playersView;
+    @FXML private FlowPane playersView;
     @FXML private GridPane pieceView;
+    private PieceViewManager pieceViewManager;
+
     @FXML private Label playerOneScore;
     @FXML private Label playerTwoScore;
     @FXML private Label playerThreeScore;
@@ -62,6 +64,11 @@ public class Controller implements EventHandler<KeyEvent> {
         Image purple = new Image("file:@res/purple.jpg");
 
 
+
+        pieceViewManager = new PieceViewManager(30, 15, pieceView);
+        pieceViewManager.resetPieces(currentPlayer);
+
+        // INITIALIZES THE BOARD
         // Creates all of the rows and columns
         for(int i=0; i<20; i++){
             grid.getColumnConstraints().add(new ColumnConstraints(20));
@@ -86,6 +93,8 @@ public class Controller implements EventHandler<KeyEvent> {
                 });
             }
         }
+
+
     }
 
     /**
@@ -97,8 +106,7 @@ public class Controller implements EventHandler<KeyEvent> {
         System.out.println("Row: " + x + " Column: " + y);
         if (board.checkClick(x, y, currentPlayer)) {
             // -------- ADD -------  Now check to make sure haven't already clicked there
-            String colorString = "-fx-background-color:" + currentPlayer.getMutedColorString() + ";";
-            pane.setStyle(colorString);
+            pane.setStyle(currentPlayer.getMutedColorString());
             clicks.add(new GridCell(x, y, pane));
         }
     }
@@ -135,14 +143,14 @@ public class Controller implements EventHandler<KeyEvent> {
         if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
             // changes color
             for(GridCell click: clicks) {
-                String colorString = "-fx-background-color:" + currentPlayer.getColorString() + ";";
-                click.getPane().setStyle(colorString);
+                click.getPane().setStyle(currentPlayer.getColorString());
             }
             board.addClicksToBoard(clicks, currentPlayer);
             clicks.clear();
             // ----- ADD ------  updateScore();
             updateAllScores();
             getNextPlayer();
+            pieceViewManager.resetPieces(currentPlayer);
         } else {
             for(GridCell click: clicks) {
                 click.getPane().setStyle("-fx-background-color:none;");

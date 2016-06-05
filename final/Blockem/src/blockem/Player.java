@@ -59,11 +59,11 @@ public class Player {
     }
 
     public String getColorString() {
-        return "rgb(" + r + "," + g + "," + b +")";
+        return "-fx-background-color:rgb(" + r + "," + g + "," + b +");";
     }
 
     public String getMutedColorString() {
-        return "rgb(" + Math.round(r/1.5) + "," + Math.round(g/1.5) + "," + Math.round(b/1.5) +")";
+        return "-fx-background-color:rgb(" + Math.round(r/1.5) + "," + Math.round(g/1.5) + "," + Math.round(b/1.5) +");";
     }
 
 

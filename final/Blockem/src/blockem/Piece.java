@@ -78,4 +78,6 @@ public class Piece {
         return size;
     }
 
+    public ArrayList<ArrayList<Coordinate>> getRotations() { return rotations; }
+
 }
