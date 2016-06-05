@@ -55,6 +55,7 @@ public class Controller implements EventHandler<KeyEvent> {
     @FXML private Label playerWon;
 
     private boolean gameOver = false;
+    String backgroundString = "-fx-background-color: rgb(50,50,50); -fx-border-color: gray;";
 
     public void initialize() {
         // Add four players
@@ -89,8 +90,7 @@ public class Controller implements EventHandler<KeyEvent> {
         for(int i=0; i<21; i++){
             for(int j=0; j<21; j++){
                 final Pane cell = new Pane();
-                // BACKGROUND
-                cell.setStyle("-fx-background-color: gray; -fx-border-color: black;");
+                cell.setStyle(backgroundString);
                 grid.add(cell, i, j);
                 paneList.add(cell);
 
@@ -205,8 +205,7 @@ public class Controller implements EventHandler<KeyEvent> {
             message.setText("");
         } else {
             for(GridCell click: clicks) {
-                // BACKGROUND
-                click.getPane().setStyle("-fx-background-color: gray; -fx-border-color: black;");
+                click.getPane().setStyle(backgroundString);
             }
             if (!validPlacement) {
                 message.setText("Invalid Placement");
@@ -224,8 +223,7 @@ public class Controller implements EventHandler<KeyEvent> {
         getNextPlayer();
         pieceViewManager.resetPieces(currentPlayer);
         for(GridCell click: clicks) {
-            // BACKGROUND
-            click.getPane().setStyle("-fx-background-color: gray; -fx-border-color: black;");
+            click.getPane().setStyle(backgroundString);
         }
         clicks.clear();
     }
@@ -305,8 +303,7 @@ public class Controller implements EventHandler<KeyEvent> {
     private void resetGame() {
 
         for(Pane pane: paneList) {
-            // BACKGROUND
-            pane.setStyle("-fx-background-color: gray; -fx-border-color: black;");
+            pane.setStyle(backgroundString);
         }
 
         currentPlayer = players.get(0);
