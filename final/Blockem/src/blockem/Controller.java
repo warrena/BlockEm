@@ -131,9 +131,10 @@ public class Controller implements EventHandler<KeyEvent> {
                     clicks.add(new GridCell(x, y, pane));
                 }
             }
-            else if (removeClick != null) {
+            if (removeClick != null) {
+
                 clicks.remove(removeClick);
-                removeClick.getPane().setStyle("-fx-background-color:none;");
+                removeClick.getPane().setStyle(backgroundString);
             }
         }
     }
