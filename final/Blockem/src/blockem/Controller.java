@@ -113,7 +113,15 @@ public class Controller implements EventHandler<KeyEvent> {
         if (board.checkClick(x, y, currentPlayer)) {
             // -------- ADD -------  Now check to make sure haven't already clicked there
             pane.setStyle(currentPlayer.getMutedColorString());
-            clicks.add(new GridCell(x, y, pane));
+            boolean notClicked = true;
+            for (GridCell currentClicks:clicks) {
+                if(currentClicks.getX() == x && currentClicks.getY() == y) {
+                    notClicked = false;
+                }
+            }
+            if(notClicked) {
+                clicks.add(new GridCell(x, y, pane));
+            }
         }
     }
 
