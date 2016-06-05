@@ -63,16 +63,15 @@ public class Controller implements EventHandler<KeyEvent> {
         currentPlayer = players.get(0);
         playerOneScore.setStyle("-fx-border-color: black;");
 
-        Image red = new Image("file:@res/red.jpg");
-        Image blue = new Image("file:@res/blue.jpg");
-        Image green = new Image("file:@res/green.jpg");
-        Image purple = new Image("file:@res/purple.jpg");
 
-        pieceViewManager = new PieceViewManager(100, 50, pieceView);
-        pieceViewManager.debugDrawAllRotations(currentPlayer);
+        //pieceViewManager = new PieceViewManager(100, 50, pieceView);
+        //pieceViewManager.debugDrawAllRotations(currentPlayer);
 
-        //pieceViewManager = new PieceViewManager(43, 10, pieceView);
-        //pieceViewManager.resetPieces(currentPlayer);
+        //pieceViewManager = new PieceViewManager(100, 50, pieceView);
+        //pieceViewManager.debugDrawAllRotations2(currentPlayer);
+
+        pieceViewManager = new PieceViewManager(43, 10, pieceView);
+        pieceViewManager.resetPieces(currentPlayer);
 
         // INITIALIZES THE BOARD
         // Creates all of the rows and columns
