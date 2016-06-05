@@ -28,6 +28,10 @@ public class Board {
         }
     }
 
+    public void resetBoard() {
+        board = new Player[20][20];
+    }
+
     /**
      * checks if a set of clicks makes a valid placement (has diagonal of proper color)
      * @param clicks the coordinates of a players clicks

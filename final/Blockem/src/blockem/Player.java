@@ -58,6 +58,12 @@ public class Player {
 
     }
 
+    public void resetPlayer(){
+        myPieces = createAllPieces("src/blockem/blokus_pieces.csv");
+        score = 89;
+        passed = false;
+    }
+
     public String getColorString() {
         return "-fx-background-color:rgb(" + r + "," + g + "," + b +");";
     }

@@ -39,7 +39,7 @@ public class Controller implements EventHandler<KeyEvent> {
 
 
     @FXML private GridPane grid;
-    @FXML private FlowPane playersView;
+    private ArrayList<Pane> paneList = new ArrayList<Pane>();
     @FXML private GridPane pieceView;
     private PieceViewManager pieceViewManager;
 
@@ -48,13 +48,8 @@ public class Controller implements EventHandler<KeyEvent> {
     @FXML private Label playerThreeScore;
     @FXML private Label playerFourScore;
     @FXML private Label playerWon;
-    @FXML private Label playerTurn;
 
     private boolean gameOver = false;
-//    @FXML private ImageView playerOneAvatar;
-//    @FXML private ImageView playerTwoAvatar;
-//    @FXML private ImageView playerThreeAvatar;
-//    @FXML private ImageView playerFourAvatar;
 
     public void initialize() {
         // Add four players
@@ -88,6 +83,7 @@ public class Controller implements EventHandler<KeyEvent> {
                 final Pane cell = new Pane();
                 //cell.setStyle("-fx-background-color:yellow;");
                 grid.add(cell, i, j);
+                paneList.add(cell);
 
                 cell.setOnMouseClicked(new EventHandler<MouseEvent>()
                 {
@@ -247,7 +243,6 @@ public class Controller implements EventHandler<KeyEvent> {
      */
     public void gameOver() {
         gameOver = true;
-        //still need to figure out ties
         ArrayList<Player> winningPlayers = new ArrayList<Player>();
         int winningScore = 100;
         for (Player player : players) {
@@ -274,7 +269,31 @@ public class Controller implements EventHandler<KeyEvent> {
         }
 
         playerWon.setText(winningMessage + " won!");
+    }
 
-        //exit();
+    @FXML
+    private void resetGame() {
+
+        for(Pane pane: paneList) {
+            pane.setStyle("-fx-background-color: none;");
+        }
+
+        currentPlayer = players.get(0);
+        for(Player player: players) {
+            player.resetPlayer();
+        }
+        numberPassed = 0;
+        updateAllScores();
+        pieceViewManager.resetPieces(currentPlayer);
+        board.resetBoard();
+        playerOneScore.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
+        playerTwoScore.setStyle("-fx-border-color: none; -fx-background-color: red;");
+        playerThreeScore.setStyle("-fx-border-color: none; -fx-background-color: blue;");
+        playerFourScore.setStyle("-fx-border-color: none; -fx-background-color: green;");
+        playerWon.setText("");
+
+
+        gameOver = false;
+
     }
 }

@@ -61,22 +61,22 @@
 
     <Label text=" " fx:id="playerWon" AnchorPane.topAnchor="430" AnchorPane.leftAnchor="120"> </Label>
 
-    <GridPane alignment="TOP_LEFT" fx:id="pieceView" gridLinesVisible="true">
+    <GridPane fx:id="pieceView" alignment="TOP_LEFT"  gridLinesVisible="true">
         <padding><Insets top="475" left="25" bottom="25"/></padding>
     </GridPane>
 
-    <GridPane alignment="TOP_LEFT" gridLinesVisible="true" fx:id="grid">
-
-        <padding><Insets
-                top="25" right="25" bottom="50" left="25"/></padding>
-
+    <GridPane fx:id="grid" alignment="TOP_LEFT" gridLinesVisible="true">
+        <padding><Insets top="25" right="25" bottom="50" left="25"/></padding>
     </GridPane>
 
     <Button fx:id="finished" text="Finished Turn" onAction="#checkValidPiece"
             AnchorPane.topAnchor="400" AnchorPane.leftAnchor=" 450"/>
 
     <Button fx:id="pass" text="Pass" onAction="#playerPass"
-            AnchorPane.topAnchor="400" AnchorPane.leftAnchor="600"/>
+            AnchorPane.topAnchor="400" AnchorPane.leftAnchor="565"/>
+
+    <Button id="resetButton" text="New Game" onAction="#resetGame"
+            AnchorPane.topAnchor="400" AnchorPane.leftAnchor="625"/>
 
 
 </AnchorPane>
