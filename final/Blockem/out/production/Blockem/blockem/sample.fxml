@@ -20,7 +20,7 @@
             <Insets top="-350" left="450"/>
         </padding>
 
-        <Label text="Player1: 89" fx:id="playerOneScore">
+        <Label text="Player1 (yellow): 89" fx:id="playerOneScore">
             <graphic>
                 <ImageView id="playerOneAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/cow.png"/>
@@ -28,7 +28,7 @@
             </graphic>
         </Label>
 
-        <Label text="Player2: 89" fx:id="playerTwoScore">
+        <Label text="Player2 (red): 89" fx:id="playerTwoScore">
             <graphic>
                 <ImageView id="playerTwoAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/sloth.png"/>
@@ -36,7 +36,7 @@
             </graphic>
         </Label>
 
-        <Label text="Player3: 89" fx:id="playerThreeScore">
+        <Label text="Player3 (blue): 89" fx:id="playerThreeScore">
             <graphic>
                 <ImageView id="playerThreeAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/moose.png"/>
@@ -44,13 +44,15 @@
             </graphic>
         </Label>
 
-        <Label text="Player4: 89" fx:id="playerFourScore">
+        <Label text="Player4 (green): 89" fx:id="playerFourScore">
             <graphic>
                 <ImageView id="playerFourAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/penguin.png"/>
                 </ImageView>
             </graphic>
         </Label>
+
+        <Label text=" " fx:id="playerWon"> </Label>
 
     </FlowPane>
 
@@ -65,9 +67,11 @@
 
     </GridPane>
 
-    <Button fx:id="finished" text="Finished!" onAction="#checkValidPiece"
-            AnchorPane.topAnchor="380" AnchorPane.leftAnchor=" 450"/>
+    <Button fx:id="finished" text="Finished Turn" onAction="#checkValidPiece"
+            AnchorPane.topAnchor="400" AnchorPane.leftAnchor=" 450"/>
 
+    <Button fx:id="pass" text="Pass" onAction="#playerPass"
+            AnchorPane.topAnchor="350" AnchorPane.leftAnchor=" 450"/>
 
 
 </AnchorPane>

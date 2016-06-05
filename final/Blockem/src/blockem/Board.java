@@ -35,20 +35,19 @@ public class Board {
      * @return a boolean: true if clicks are possible, false otherwise
      */
     public boolean checkValidPlacement(ArrayList<GridCell> clicks, Player currentPlayer) {
-        boolean diagonal = false;
         for (GridCell square: clicks) {
             int x = square.getX();
             int y = square.getY();
             // checks if has diagonal
             if (isPlayer(x + 1, y + 1, currentPlayer) || isPlayer(x - 1, y + 1, currentPlayer)
                     || isPlayer(x - 1, y - 1, currentPlayer) || isPlayer(x + 1, y - 1, currentPlayer)) {
-                diagonal = true;
+                return true;
             //checks if starting piece (aka corner)
             } else if ((x==0 && y == 0) || (x == 19 && y == 19) || (x == 19 && y == 0) || (x == 0 && y == 19)) {
-                diagonal = true;
+                return true;
             }
         }
-        return diagonal;
+        return false;
     }
 
     /**

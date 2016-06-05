@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static javafx.application.Platform.exit;
+
 public class Controller implements EventHandler<KeyEvent> {
     final private double FRAMES_PER_SECOND = 20.0;
 
@@ -45,6 +47,8 @@ public class Controller implements EventHandler<KeyEvent> {
     @FXML private Label playerTwoScore;
     @FXML private Label playerThreeScore;
     @FXML private Label playerFourScore;
+    @FXML private Label playerWon;
+    @FXML private Label playerTurn;
 //    @FXML private ImageView playerOneAvatar;
 //    @FXML private ImageView playerTwoAvatar;
 //    @FXML private ImageView playerThreeAvatar;
@@ -52,17 +56,17 @@ public class Controller implements EventHandler<KeyEvent> {
 
     public void initialize() {
         // Add four players
-        players.add(new Player("Jeremiah", "/pic.jpg", 255, 255, 0));
-        players.add(new Player("Allie", "/pic.jpg", 255, 0, 0));
-        players.add(new Player("Jeremiah", "/pic.jpg", 0, 0, 255));
-        players.add(new Player("Allie", "/pic.jpg", 0, 204, 0));
+        players.add(new Player("Player1", "/pic.jpg", 255, 255, 0));
+        players.add(new Player("Player2", "/pic.jpg", 255, 0, 0));
+        players.add(new Player("Player3", "/pic.jpg", 0, 0, 255));
+        players.add(new Player("Player4", "/pic.jpg", 0, 204, 0));
         currentPlayer = players.get(0);
+        playerOneScore.setStyle("-fx-border-color: black;");
 
         Image red = new Image("file:@res/red.jpg");
         Image blue = new Image("file:@res/blue.jpg");
         Image green = new Image("file:@res/green.jpg");
         Image purple = new Image("file:@res/purple.jpg");
-
 
 
         pieceViewManager = new PieceViewManager(30, 15, pieceView);
@@ -122,11 +126,33 @@ public class Controller implements EventHandler<KeyEvent> {
      */
     public Player getNextPlayer() {
         //getNextPlayer - returns the next player, checks allPassed and calls gameOver if valid
-        int curIndex = players.indexOf(currentPlayer);
-        if(curIndex == 3) {
-            currentPlayer = players.get(0);
+        System.out.println(numberPassed);
+        if (allPassed()) {
+            gameOver();
         } else {
-            currentPlayer = players.get(curIndex + 1);
+            int curIndex = players.indexOf(currentPlayer);
+            if (curIndex == 3) {
+                currentPlayer = players.get(0);
+                playerOneScore.setStyle("-fx-border-color: black;");
+                playerFourScore.setStyle("-fx-border-color: none;");
+            } else {
+                currentPlayer = players.get(curIndex + 1);
+                if(curIndex == 0) {
+                    playerTwoScore.setStyle("-fx-border-color: black;");
+                    playerOneScore.setStyle("-fx-border-color: none;");
+                }
+                if(curIndex == 1) {
+                    playerThreeScore.setStyle("-fx-border-color: black;");
+                    playerTwoScore.setStyle("-fx-border-color: none;");
+                }
+                if(curIndex == 2) {
+                    playerFourScore.setStyle("-fx-border-color: black;");
+                    playerThreeScore.setStyle("-fx-border-color: none;");
+                }
+            }
+            if (currentPlayer.passed) {
+                getNextPlayer();
+            }
         }
         return null;
     }
@@ -159,11 +185,17 @@ public class Controller implements EventHandler<KeyEvent> {
         }
     }
 
+    @FXML
+    public void playerPass() {
+        currentPlayer.passed = true;
+        numberPassed +=1;
+        getNextPlayer();
+    }
     private void updateAllScores() {
-        playerOneScore.setText("Player One Score: " + String.valueOf(players.get(0).getScore()));
-        playerTwoScore.setText("Player Two Score: " + String.valueOf(players.get(1).getScore()));
-        playerThreeScore.setText("Player Three Score: " + String.valueOf(players.get(2).getScore()));
-        playerFourScore.setText("Player Four Score: " + String.valueOf(players.get(3).getScore()));
+        playerOneScore.setText("Player One Score (yellow): " + String.valueOf(players.get(0).getScore()));
+        playerTwoScore.setText("Player Two Score (red): " + String.valueOf(players.get(1).getScore()));
+        playerThreeScore.setText("Player Three Score (blue): " + String.valueOf(players.get(2).getScore()));
+        playerFourScore.setText("Player Four Score (green): " + String.valueOf(players.get(3).getScore()));
     }
 
     /**
@@ -199,15 +231,18 @@ public class Controller implements EventHandler<KeyEvent> {
      * winner by finding the player with the lowest score.
      * @return winning player
      */
-    public Player gameOver() {
+    public void gameOver() {
         //still need to figure out ties
         Player winningPlayer = null;
-        int winningScore = 0;
+        int winningScore = 100;
         for (Player player : players) {
-            if (player.getScore() > winningScore) {
+            if (player.getScore() < winningScore) {
+                System.out.println(player.getName());
                 winningPlayer = player;
+                winningScore = winningPlayer.getScore();
             }
         }
-        return winningPlayer;
+        playerWon.setText(winningPlayer.getName() + " won!");
+        //exit();
     }
 }
