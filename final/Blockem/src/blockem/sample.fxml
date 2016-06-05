@@ -14,8 +14,9 @@
 
 <AnchorPane fx:controller="blockem.Controller" xmlns:fx="http://javafx.com/fxml">
     <ImageView id="backgroun" fitWidth="730" fitHeight="650">
-        <Image url="@res/tabletop.jpg"/>
+        <Image url="@res/background.jpg"/>
     </ImageView>
+
     <FlowPane prefHeight="500" prefWidth="200" orientation="vertical" fx:id="playersView"
               alignment="TOP_RIGHT" prefWrapLength="200" vgap="30" columnHalignment="LEFT">
         <padding>
