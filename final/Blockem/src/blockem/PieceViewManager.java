@@ -39,7 +39,7 @@ public class PieceViewManager {
         for(int i=0; i<width; i++) {
             for (int j = 0; j < height; j++) {
                 final Pane cell = new Pane();
-                cell.setStyle("-fx-background-color:rgb(200,200,200); -fx-border-color: black;");
+                cell.setStyle("-fx-background-color:rgb(60,60,60); -fx-border-color: rgb(200,200,200);");
                 pieceView.add(cell, i, j);
                 pieceViewTracker[i][j] = cell;
             }
@@ -60,7 +60,7 @@ public class PieceViewManager {
         for(int i=0; i<width; i++) {
             for (int j = 0; j < height; j++) {
                 // BACKGROUND
-                pieceViewTracker[i][j].setStyle("-fx-background-color:rgb(200,200,200); -fx-border-color: black;");
+                pieceViewTracker[i][j].setStyle("-fx-background-color:rgb(60,60,60); -fx-border-color: rgb(200,200,200);");
             }
         }
 

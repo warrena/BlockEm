@@ -64,7 +64,7 @@ public class Controller implements EventHandler<KeyEvent> {
         players.add(new Player("Player4", "/pic.jpg", 0, 204, 0));
         currentPlayer = players.get(0);
         playerOneScore.setStyle("-fx-border-color: yellow;");
-        message.setFont(Font.font("Arial Black", 18.0));
+        message.setFont(Font.font("Arial Black", 20.0));
         playerOneScore.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
 
 
