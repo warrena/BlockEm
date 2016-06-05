@@ -15,15 +15,12 @@
 <AnchorPane fx:controller="blockem.Controller" xmlns:fx="http://javafx.com/fxml">
 
     <FlowPane prefHeight="500" prefWidth="200" orientation="vertical" fx:id="playersView"
-              alignment="TOP_RIGHT" prefWrapLength="200"  columnHalignment="LEFT">
+              alignment="TOP_RIGHT" prefWrapLength="200" vgap="30" columnHalignment="LEFT">
         <padding>
             <Insets top="35" left="470"/>
         </padding>
 
         <Label text="Player1 (yellow): 89" fx:id="playerOneScore" scaleY="1.2" scaleX="1.2">
-            <padding>
-                <Insets top="10" bottom="15"/>
-            </padding>
             <graphic>
                 <ImageView id="playerOneAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/cow.png"/>
@@ -32,9 +29,6 @@
         </Label>
 
         <Label text="Player2 (red): 89" fx:id="playerTwoScore" scaleY="1.2" scaleX="1.2">
-            <padding>
-                <Insets top="15" bottom="15"/>
-            </padding>
             <graphic>
                 <ImageView id="playerTwoAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/sloth.png"/>
@@ -43,20 +37,14 @@
         </Label>
 
         <Label text="Player3 (blue): 89" fx:id="playerThreeScore" scaleY="1.2" scaleX="1.2">
-            <padding>
-                <Insets top="15" bottom="15"/>
-            </padding>
             <graphic>
-                <ImageView id="playerThreeAvatar" fitHeight="50" fitWidth="50">
+                <ImageView id="playerThreeAvatar" fitHeight="65" fitWidth="65">
                     <Image url="@res/moose.png"/>
                 </ImageView>
             </graphic>
         </Label>
 
         <Label text="Player4 (green): 89" fx:id="playerFourScore" scaleY="1.2" scaleX="1.2">
-            <padding>
-                <Insets top="15" bottom="15"/>
-            </padding>
             <graphic>
                 <ImageView id="playerFourAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/penguin.png"/>

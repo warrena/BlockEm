@@ -49,6 +49,8 @@ public class Controller implements EventHandler<KeyEvent> {
     @FXML private Label playerFourScore;
     @FXML private Label playerWon;
     @FXML private Label playerTurn;
+
+    private boolean gameOver = false;
 //    @FXML private ImageView playerOneAvatar;
 //    @FXML private ImageView playerTwoAvatar;
 //    @FXML private ImageView playerThreeAvatar;
@@ -106,20 +108,22 @@ public class Controller implements EventHandler<KeyEvent> {
      * Does all that needs to be done when a cell is clicked
      */
     public void handleClick(Pane pane) {
-        int y = grid.getRowIndex(pane);
-        int x = grid.getColumnIndex(pane);
-        System.out.println("Row: " + x + " Column: " + y);
-        if (board.checkClick(x, y, currentPlayer)) {
-            // -------- ADD -------  Now check to make sure haven't already clicked there
-            pane.setStyle(currentPlayer.getMutedColorString());
-            boolean notClicked = true;
-            for (GridCell currentClicks:clicks) {
-                if(currentClicks.getX() == x && currentClicks.getY() == y) {
-                    notClicked = false;
+        if(!gameOver) {
+            int y = grid.getRowIndex(pane);
+            int x = grid.getColumnIndex(pane);
+            System.out.println("Row: " + x + " Column: " + y);
+            if (board.checkClick(x, y, currentPlayer)) {
+                // -------- ADD -------  Now check to make sure haven't already clicked there
+                pane.setStyle(currentPlayer.getMutedColorString());
+                boolean notClicked = true;
+                for (GridCell currentClicks : clicks) {
+                    if (currentClicks.getX() == x && currentClicks.getY() == y) {
+                        notClicked = false;
+                    }
                 }
-            }
-            if(notClicked) {
-                clicks.add(new GridCell(x, y, pane));
+                if (notClicked) {
+                    clicks.add(new GridCell(x, y, pane));
+                }
             }
         }
     }
@@ -242,6 +246,7 @@ public class Controller implements EventHandler<KeyEvent> {
      * @return winning player
      */
     public void gameOver() {
+        gameOver = true;
         //still need to figure out ties
         Player winningPlayer = null;
         int winningScore = 100;
