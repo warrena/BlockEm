@@ -65,7 +65,7 @@ public class Controller implements EventHandler<KeyEvent> {
         players.add(new Player("Player4", "/pic.jpg", 0, 204, 0));
         currentPlayer = players.get(0);
         playerOneScore.setStyle("-fx-border-color: yellow;");
-        message.setFont(Font.font("Arial Black", 18.0));
+        message.setFont(Font.font("Arial Black", 20.0));
         playerOneScore.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
 
 
@@ -131,7 +131,7 @@ public class Controller implements EventHandler<KeyEvent> {
                     clicks.add(new GridCell(x, y, pane));
                 }
             }
-            else {
+            else if (removeClick != null) {
                 clicks.remove(removeClick);
                 removeClick.getPane().setStyle("-fx-background-color:none;");
             }
