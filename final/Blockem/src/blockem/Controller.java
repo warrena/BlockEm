@@ -21,6 +21,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -47,7 +48,7 @@ public class Controller implements EventHandler<KeyEvent> {
     @FXML private Label playerTwoScore;
     @FXML private Label playerThreeScore;
     @FXML private Label playerFourScore;
-    @FXML private Label playerWon;
+    @FXML private Label message;
     @FXML private Label playerTurn;
 //    @FXML private ImageView playerOneAvatar;
 //    @FXML private ImageView playerTwoAvatar;
@@ -62,6 +63,7 @@ public class Controller implements EventHandler<KeyEvent> {
         players.add(new Player("Player4", "/pic.jpg", 0, 204, 0));
         currentPlayer = players.get(0);
         playerOneScore.setStyle("-fx-border-color: yellow;");
+        message.setFont(Font.font(20.0));
 
 
         //pieceViewManager = new PieceViewManager(100, 50, pieceView);
@@ -113,13 +115,19 @@ public class Controller implements EventHandler<KeyEvent> {
             // -------- ADD -------  Now check to make sure haven't already clicked there
             pane.setStyle(currentPlayer.getMutedColorString());
             boolean notClicked = true;
+            GridCell removeClick = null;
             for (GridCell currentClicks:clicks) {
                 if(currentClicks.getX() == x && currentClicks.getY() == y) {
+                    removeClick = currentClicks;
                     notClicked = false;
                 }
             }
             if(notClicked) {
                 clicks.add(new GridCell(x, y, pane));
+            }
+            else {
+                clicks.remove(removeClick);
+                removeClick.getPane().setStyle("-fx-background-color:none;");
             }
         }
     }
@@ -175,7 +183,8 @@ public class Controller implements EventHandler<KeyEvent> {
      */
     @FXML
     public void checkValidPiece() {
-        if (board.checkValidPlacement(clicks, currentPlayer) && currentPlayer.hasPiece(clicks)) {
+        boolean validPlacement = board.checkValidPlacement(clicks, currentPlayer);
+        if (validPlacement && currentPlayer.hasPiece(clicks)) {
             // changes color
             for(GridCell click: clicks) {
                 click.getPane().setStyle(currentPlayer.getColorString());
@@ -186,9 +195,15 @@ public class Controller implements EventHandler<KeyEvent> {
             updateAllScores();
             getNextPlayer();
             pieceViewManager.resetPieces(currentPlayer);
+            message.setText("");
         } else {
             for(GridCell click: clicks) {
                 click.getPane().setStyle("-fx-background-color:none;");
+            }
+            if (!validPlacement) {
+                message.setText("Invalid Placement");
+            } else {
+                message.setText("Invalid Piece");
             }
             clicks.clear();
         }
@@ -268,7 +283,7 @@ public class Controller implements EventHandler<KeyEvent> {
 
         }
 
-        playerWon.setText(winningMessage + " won!");
+        message.setText(winningMessage + " won!");
 
         //exit();
     }
