@@ -94,4 +94,24 @@ public class PieceViewManager {
 
     }
 
+    public void debugDrawAllRotations2(Player player) {
+        int delay = 0;
+        int x = 0;
+        int y = 0;
+        for(Piece piece: player.getPieces()) {
+            delay += 1;
+            if(delay > 9) {
+                for (ArrayList<Coordinate> rotation : piece.getRotations()) {
+                    drawPiece(rotation, x, y, player);
+                    x += 4;
+                    if (x > 80) {
+                        x = 0;
+                        y += 6;
+                    }
+                }
+            }
+        }
+
+    }
+
 }

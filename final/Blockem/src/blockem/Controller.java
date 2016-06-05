@@ -68,8 +68,11 @@ public class Controller implements EventHandler<KeyEvent> {
         Image green = new Image("file:@res/green.jpg");
         Image purple = new Image("file:@res/purple.jpg");
 
+        //pieceViewManager = new PieceViewManager(100, 50, pieceView);
+        //pieceViewManager.debugDrawAllRotations(currentPlayer);
+
         pieceViewManager = new PieceViewManager(100, 50, pieceView);
-        pieceViewManager.debugDrawAllRotations(currentPlayer);
+        pieceViewManager.debugDrawAllRotations2(currentPlayer);
 
         //pieceViewManager = new PieceViewManager(43, 10, pieceView);
         //pieceViewManager.resetPieces(currentPlayer);

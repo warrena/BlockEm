@@ -20,7 +20,7 @@
             <Insets top="-350" left="450"/>
         </padding>
 
-        <Label text="Player1 (yellow): 89" fx:id="playerOneScore">
+        <Label text="Player1 (yellow): 89" fx:id="playerOneScore" scaleY="1.2" scaleX="1.2">
             <graphic>
                 <ImageView id="playerOneAvatar" fitHeight="50" fitWidth="50">
                     <Image url="@res/cow.png"/>
