@@ -1,24 +1,24 @@
-package blockem;
-
-import javafx.geometry.VPos;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
- * Created by Sam on 5/26/16.
+ * Created by Sam, Allie and Josh
+ * This is the game board for Blockem, it contains a matrix that
+ * represents the board (each cell either has a player or is null).
+ * This class is used to check whether a placement on the board is valid,
+ * and to record where players have played.
  */
+
+package blockem;
+
+
+import java.util.ArrayList;
+
+
 public class Board {
     // A two dimensional array to represent the board
     private Player[][] board = new Player[20][20];
 
     /**
-     * adds if a set of clicks to the board
+     * adds the location a player clicks onto the board
      * @param clicks the coordinates of a players clicks
      * @param currentPlayer the currentPlayer
      */
@@ -28,12 +28,15 @@ public class Board {
         }
     }
 
+    /**
+     * resets the board to start a new game
+     */
     public void resetBoard() {
         board = new Player[20][20];
     }
 
     /**
-     * checks if a set of clicks makes a valid placement (has diagonal of proper color)
+     * checks if a set of clicks makes a valid placement
      * @param clicks the coordinates of a players clicks
      * @param currentPlayer the currentPlayer
      * @return a boolean: true if clicks are possible, false otherwise
@@ -55,11 +58,11 @@ public class Board {
     }
 
     /**
-     *  Returns true if coordinate location does not have that player
+     * Returns true if coordinate location on the board has the player
      * @param x the coordinates of a click
      * @param y the coordinates of a click
      * @param player the currentPlayer
-     * @return a boolean: true if click is possible, false otherwise
+     * @return a boolean: true if player is at location, false otherwise
      */
     private boolean isPlayer(int x, int y, Player player){
         if(x < 0 || x > 19 || y < 0 || y > 19 ) {
@@ -69,8 +72,9 @@ public class Board {
         }
         return false;
     }
+
     /**
-     *  checks if a click is “valid” aka not adjacent to another of that players pieces
+     * checks if a click is “valid” aka not adjacent to another of that player's pieces
      * @param x the coordinates of a click
      * @param y the coordinates of a click
      * @param currentPlayer the currentPlayer
@@ -85,10 +89,5 @@ public class Board {
         return false;
     }
 
-
-    public static void main(String[] args) {
-        Board b1 = new Board();
-
-    }
 
 }

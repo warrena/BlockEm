@@ -1,33 +1,20 @@
+/**
+ * Created by Sam, Allie and Josh
+ * This is the Controller for Blockem, it communicates between the model and view.
+ * It initializes the players, updates the text, colors, scores, and turns in the game.
+ * It also handles the clicks and checks that moves are valid and if the game is over.
+ */
+
 package blockem;
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Point2D;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
-
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static javafx.application.Platform.exit;
 
 public class Controller implements EventHandler<KeyEvent> {
     final private double FRAMES_PER_SECOND = 20.0;
@@ -38,24 +25,19 @@ public class Controller implements EventHandler<KeyEvent> {
     Board board = new Board();
     ArrayList<GridCell> clicks = new ArrayList<GridCell>();
 
-
-    @FXML private GridPane grid;
     private ArrayList<Pane> paneList = new ArrayList<Pane>();
-    @FXML private GridPane pieceView;
     private PieceViewManager pieceViewManager;
-
+    private boolean gameOver = false;
+    @FXML private GridPane pieceView;
+    @FXML private GridPane grid;
     @FXML private Label playerOneScore;
     @FXML private Label playerTwoScore;
     @FXML private Label playerThreeScore;
     @FXML private Label playerFourScore;
-
     @FXML private Label message;
-    @FXML private Label playerTurn;
 
-    @FXML private Label playerWon;
-
-    private boolean gameOver = false;
-    String backgroundString = "-fx-background-color: rgb(50,50,50); -fx-border-color: gray;";
+    //background color of the board
+    private String backgroundString = "-fx-background-color: rgb(50,50,50); -fx-border-color: gray;";
 
     public void initialize() {
         // Add four players
@@ -64,17 +46,9 @@ public class Controller implements EventHandler<KeyEvent> {
         players.add(new Player("Player3", "/pic.jpg", 0, 0, 255));
         players.add(new Player("Player4", "/pic.jpg", 0, 204, 0));
         currentPlayer = players.get(0);
-        playerOneScore.setStyle("-fx-border-color: yellow;");
+        //initialize visuals for the first player
         message.setFont(Font.font("Arial Black", 20.0));
-        playerOneScore.setStyle("-fx-border-color: black; -fx-background-color: yellow;");
-
-
-
-        //pieceViewManager = new PieceViewManager(100, 50, pieceView);
-        //pieceViewManager.debugDrawAllRotations(currentPlayer);
-
-        //pieceViewManager = new PieceViewManager(100, 50, pieceView);
-        //pieceViewManager.debugDrawAllRotations2(currentPlayer);
+        playerOneScore.setStyle("-fx-background-color: yellow;");
 
         pieceViewManager = new PieceViewManager(43, 10, pieceView);
         pieceViewManager.resetPieces(currentPlayer);
@@ -105,12 +79,14 @@ public class Controller implements EventHandler<KeyEvent> {
                 });
             }
         }
-
-
     }
 
+
     /**
-     * Does all that needs to be done when a cell is clicked
+     * When a cell in the board is clicked, if it is a valid click,
+     * it is colored in with the color of the current player, added
+     * to a list of clicks
+     * @param pane the pane (cell) that the player clicked on
      */
     public void handleClick(Pane pane) {
         if(!gameOver) {
@@ -118,9 +94,9 @@ public class Controller implements EventHandler<KeyEvent> {
             int x = grid.getColumnIndex(pane);
             GridCell removeClick = null;
             if (board.checkClick(x, y, currentPlayer)) {
-                // -------- ADD -------  Now check to make sure haven't already clicked there
                 pane.setStyle(currentPlayer.getMutedColorString());
                 boolean notClicked = true;
+                //checks if a cell has already been clicked
                 for (GridCell currentClicks : clicks) {
                     if (currentClicks.getX() == x && currentClicks.getY() == y) {
                         notClicked = false;
@@ -131,14 +107,13 @@ public class Controller implements EventHandler<KeyEvent> {
                     clicks.add(new GridCell(x, y, pane));
                 }
             }
+            //uncolors a cell if it is clicked again
             if (removeClick != null) {
-
                 clicks.remove(removeClick);
                 removeClick.getPane().setStyle(backgroundString);
             }
         }
     }
-
 
     @Override
     public void handle(KeyEvent keyEvent) {
@@ -146,11 +121,12 @@ public class Controller implements EventHandler<KeyEvent> {
     }
 
     /**
-     * Returns the player whose turn is next
+     * Returns the player whose turn is next, if
+     * all players has passed, the game is over. It also skips over
+     * players who have passed
      * @return player
      */
     public Player getNextPlayer() {
-        //getNextPlayer - returns the next player, checks allPassed and calls gameOver if valid
         if (allPassed()) {
             gameOver();
         } else {
@@ -185,28 +161,29 @@ public class Controller implements EventHandler<KeyEvent> {
      * Checks whether the piece that the player played
      * can be played at that location on the board (that the piece connects to the
      * corner of another piece from that player) and is a piece that the player has.
-     * If both of these conditions are true, it returns true.
+     * If both of these conditions are true, it is valid
      * @return true if placement of piece is valid
      */
     @FXML
     public void checkValidPiece() {
         boolean validPlacement = board.checkValidPlacement(clicks, currentPlayer);
         if (validPlacement && currentPlayer.hasPiece(clicks)) {
-            // changes color
+            // changes color to signify that it is played piece
             for(GridCell click: clicks) {
                 click.getPane().setStyle(currentPlayer.getColorString());
             }
             board.addClicksToBoard(clicks, currentPlayer);
             clicks.clear();
-            // ----- ADD ------  updateScore();
             updateAllScores();
             getNextPlayer();
             pieceViewManager.resetPieces(currentPlayer);
             message.setText("");
         } else {
+            //removes color from clicked cells, so player can try a different piece
             for(GridCell click: clicks) {
                 click.getPane().setStyle(backgroundString);
             }
+            //error messages to help the player
             if (!validPlacement) {
                 message.setText("Invalid Placement");
             } else {
@@ -216,6 +193,11 @@ public class Controller implements EventHandler<KeyEvent> {
         }
     }
 
+    /**
+     * If a player passes, and clicks made this turn are
+     * removed, the player is marked as having passed,
+     * and the turn moves to the next player.
+     */
     @FXML
     public void playerPass() {
         currentPlayer.passed = true;
@@ -228,27 +210,14 @@ public class Controller implements EventHandler<KeyEvent> {
         clicks.clear();
     }
 
-
+    /**
+     * Updates the score value in the view for all players
+     */
     private void updateAllScores() {
         playerOneScore.setText("Player One Score: " + String.valueOf(players.get(0).getScore()));
         playerTwoScore.setText("Player Two Score: " + String.valueOf(players.get(1).getScore()));
         playerThreeScore.setText("Player Three Score: " + String.valueOf(players.get(2).getScore()));
         playerFourScore.setText("Player Four Score: " + String.valueOf(players.get(3).getScore()));
-    }
-
-    /**
-     * Checks whether the current player can select a square on the game board.
-     * The player cannot select squares where a piece has already been played
-     * or which is adjacent to one of their pieces.
-     * @param x, y the coordinates of the board square the player is trying to select
-     * @return true or false
-     */
-    public boolean checkValidClick(int x, int y) {
-        if (board.checkClick(x,y, currentPlayer)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -266,8 +235,8 @@ public class Controller implements EventHandler<KeyEvent> {
     /**
      * Returns the player that has won the game.
      * This is called once the game is over, and determines the
-     * winner by finding the player with the lowest score.
-     * @return winning player
+     * winner by finding the player (or players) with the lowest score.
+     * It updates the message on the screen with the winning player(s).
      */
     public void gameOver() {
         gameOver = true;
@@ -275,8 +244,12 @@ public class Controller implements EventHandler<KeyEvent> {
         int winningScore = 100;
         for (Player player : players) {
             if (player.getScore() <= winningScore) {
-                winningPlayers.add(player);
                 winningScore = player.getScore();
+            }
+        }
+        for (Player player : players) {
+            if (player.getScore() == winningScore) {
+                winningPlayers.add(player);
             }
         }
         int counter = 0;
@@ -298,6 +271,11 @@ public class Controller implements EventHandler<KeyEvent> {
         message.setText(winningMessage + " won!");
     }
 
+    /**
+     * Resets the view for a new game.
+     * The board, scores and pieces are returned to their
+     * original states.
+     */
     @FXML
     private void resetGame() {
 
@@ -318,7 +296,6 @@ public class Controller implements EventHandler<KeyEvent> {
         playerThreeScore.setStyle("-fx-border-color: none; -fx-background-color: blue;");
         playerFourScore.setStyle("-fx-border-color: none; -fx-background-color: green;");
         message.setText("");
-
 
         gameOver = false;
 
