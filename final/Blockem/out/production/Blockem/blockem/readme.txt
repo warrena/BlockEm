@@ -30,4 +30,4 @@ The player(s) with the lowest score will win the game.
 
 Click new game to reset the board and scores to start a new game.
 
-See in res for example game board.
+See in res for example_game.
