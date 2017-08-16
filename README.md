@@ -1,4 +1,6 @@
-Sam Neubauer, Josh Pitkofsky, and Allie Warren
+## Sam Neubauer, Josh Pitkofsky, and Allie Warren
+
+## A Simple Blockus Application
 
 Core Classes:
 
